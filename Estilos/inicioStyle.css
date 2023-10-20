@@ -1,7 +1,9 @@
 
- 
- 
- .navbar{
+
+
+/* Barra de navegacion */
+
+.navbar{
    background-color: #ececec ; 
  }
 
@@ -10,13 +12,65 @@
     font-weight:bold;
  }
 
-
+/* Body Background */
  
  body{
     background:#D9D9D9;
+
  }
 
- .section3{
+
+ /* Seccion 2 */
+.section2 h3 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+    color: #080F56;
+}
+
+.section2 p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555353;
+    font-size: 17px;
+
+}
+
+.card-body h5{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #080F56;
+    font-weight: bolder;
+}
+
+.subtitle h4{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #080F56;
+    font-weight: bolder;
+}
+
+.btn {
+    color: #D9D9D9;
+    background-color: #080F56;
+}
+
+
+/* Seccion 3 */
+
+.section3 .encabezado{
+    margin-top: 250px;
+}
+
+.section3 .encabezado h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 80px;
+
+}
+
+.section3 .encabezado p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+
+}
+
+.section3{
 
     background-image:linear-gradient(rgba(5,7,12), rgba(18, 27, 48, 0.75)), url('../Imagenes/seccion3.jpg');
     background-size: cover;
@@ -34,6 +88,42 @@
     color: aliceblue;
     font-weight: lighter;
 }
+
+/* Seccion 4 */
+
+.section4 .encabezado2 h3{
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+    color: #080F56;
+
+}
+
+.section4 p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555353;
+    font-size: 17px;
+
+}
+
+.card .logo {
+    padding-left: 40px;
+    padding-top: 25px;   
+    
+}
+
+.section4 .card-body h5{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #080F56;
+}
+
+.section4 .card-body p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555353;
+}
+
+
+
 /* Footer */
 
 .pie-pagina {
@@ -69,6 +159,7 @@
     color: aliceblue;
     font-size: 23px;
     text-align: center;
+  
 }
 
 .pie-pagina .grupo-1 .box p{
@@ -88,7 +179,20 @@
     text-align: center;
     background-color: #1320b4;
     transition: all 300ms ease;
+
 }
+
+
+.pie-pagina .grupo-1 .box3{
+    padding-left: 90px;
+}
+
+.pie-pagina .grupo-1 .box3 h2{
+    font-size: 23px;
+    color: aliceblue;
+   
+}
+
 
 .pie-pagina .grupo-1 .red-social a:hover{
 
