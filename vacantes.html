@@ -27,7 +27,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
-    <div class="container-fluid">
+    <div class="container1 container-fluid">
       <a class="navbar-brand" href="#">
         <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
       </a>
@@ -75,7 +75,22 @@
 
   <!-- Seccion 2  vacantes populares -->
 
-  <section class="section2">
+  <section  class="section2" >
+    <div class="job_card">
+      <div class="job_details">
+        <div class="img">
+          <i class="fab fa-google-drive"></i>
+        </div>
+        <div class="text">
+          <h2>Practicante de ingenieria</h2>
+          <span>remoto-latam</span>
+        </div>
+      </div>
+      <div class="job_salary">
+        <h4>$950-1M COP/Mes</h4>
+        <span>hace 1 dia</span>
+      </div>
+    </div>
     <div class="job_card">
       <div class="job_details">
         <div class="img">
@@ -138,115 +153,115 @@
     </div>
   </section>
 
-  <!-- seccion 3 filtros -->
-  <div class="section3 container-fluid">
-    <div class="row">
-      <section class="col-md-10 fs_header_bar">
-        <div class="row">
-          <div class="col-10 fs_page_title">
-            Filtrar por:
-          </div>
-        </div>
-      </section>
+  <!-- Seccion 3 filtros -->
+<div class="section3 container">
+    <div class="sidebar">
+        <section class="col-md-2 fs_header_bar">
+            <div class="row">
+                <div class="col-10 fs_page_title">
+                    Filtrar por:
+                </div>
+            </div>
+        </section>
     </div>
     <section class="col-12 fs_price_body">
-      <div>
+        <div>
+            <span class="heading">
+                Categoría
+            </span>
+            <div class="contents">
+                <ul>
+                    <li>
+                        <span>Backend</span>
+                        <span class="text-right"></span>
+                    </li>
+                    <li class="active">
+                        <span>Frontend</span>
+                        <span class="text-right">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <span>Data Analyst</span>
+                        <span class="text-right"></span>
+                    </li>
+                    <li>
+                        <span>Software QA</span>
+                        <span class="text-right"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="col-12 fs_distance_body">
         <span class="heading">
-          Categoría
+            Modalidad
         </span>
         <div class="contents">
-          <ul>
-            <li>
-              <span>Backend</span>
-              <span class="text-right"></span>
-            </li>
-            <li class="active">
-              <span>Frontend</span>
-              <span class="text-right">
-                <i class="fa fa-check"></i>
-              </span>
-            </li>
-            <li>
-              <span>Data Analyst</span>
-              <span class="text-right"></span>
-            </li>
-            <li>
-              <span>Software QA</span>
-              <span class="text-right"></span>
-            </li>
-          </ul>
+            <ul>
+                <li>
+                    <span>Presencial</span>
+                    <span class="text-right"></span>
+                </li>
+                <li class="active">
+                    <span>Remoto</span>
+                    <span class="text-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </li>
+                <li>
+                    <span>Híbrido</span>
+                    <span class="text-right"></span>
+                </li>
+            </ul>
         </div>
-      </div>
     </section>
-    <section class="col-12" class="fs_distance_body">
-      <span class="heading">
-        Modalidad
-      </span>
-      <div class="contents">
-        <ul>
-          <li>
-            <span>Presencial</span>
-            <span class="text-right"></span>
-          </li>
-          <li class="active">
-            <span>Remoto</span>
-            <span class="text-right">
-              <i class="fa fa-check"></i>
-            </span>
-          </li>
-          <li>
-            <span>Hibrido</span>
-            <span class="text-right"></span>
-          </li>
-        </ul>
-      </div>
+    <section class="col-12 fs_distance_body">
+        <span class="heading">
+            Idioma
+        </span>
+        <div class="contents">
+            <ul>
+                <li>
+                    <span>Inglés</span>
+                    <span class="text-right"></span>
+                </li>
+                <li class="active">
+                    <span>Español</span>
+                    <span class="text-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
     </section>
-    <section class="col-12" class="fs_distance_body">
-      <span class="heading">
-        Idioma
-      </span>
-      <div class="contents">
-        <ul>
-          <li>
-            <span>Inglés</span>
-            <span class="text-right"></span>
-          </li>
-          <li class="active">
-            <span>Español</span>
-            <span class="text-right">
-              <i class="fa fa-check"></i>
-            </span>
-          </li>
-        </ul>
-      </div>
+    <section class="col-12 fs_distance_body">
+        <span class="heading">
+            Skills
+        </span>
+        <div class="contents">
+            <ul>
+                <li>
+                    <span>Python</span>
+                    <span class="text-right"></span>
+                </li>
+                <li class="active">
+                    <span>JavaScript</span>
+                    <span class="text-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </li>
+                <li>
+                    <span>PHP</span>
+                    <span class="text-right"></span>
+                </li>
+            </ul>
+        </div>
     </section>
-    <section class="col-12" class="fs_distance_body">
-      <span class="heading">
-        Skills
-      </span>
-      <div class="contents">
-        <ul>
-          <li>
-            <span>Python</span>
-            <span class="text-right"></span>
-          </li>
-          <li class="active">
-            <span>javascript</span>
-            <span class="text-right">
-              <i class="fa fa-check"></i>
-            </span>
-          </li>
-          <li>
-            <span>PHP</span>
-            <span class="text-right"></span>
-          </li>
-        </ul>
-      </div>
-    </section>
+</div>
 
-  </div>
-
-
+<br>
+<br>
   <!-- footer -->
   <footer class="pie-pagina">
     <div class="grupo-1">
