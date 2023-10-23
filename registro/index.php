@@ -67,6 +67,7 @@
         </div>
         <div >
             <table class="table table-striped">
+                <tr><th colspan="2">Información Basica</th></tr>
                 <tr><th>Nombre</th><td>Gojo</td></tr>
                 <tr><th>Apellido</th><td>Satoru</td></tr>    
                 <tr><th>Correo</th><td>satoru@gmail.com</td></tr>
