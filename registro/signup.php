@@ -55,41 +55,45 @@
         </div>
     </nav>
 
-    <form action="post">
-    <div class="singup col-md-6 border mx-auto mt-5 p-4 shadow">
-        <div class="h2">Registrate</div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-            <input name="nombre" type="text" class="form-control" placeholder="Nombre" >
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-            <input name="apellido" type="text" class="form-control" placeholder="Apellido" >
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-            <input name="correo" type="email" class="form-control" placeholder="Correo" >
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-            <input name="password" type="password" class="form-control" placeholder="Password" >
-        </div>
+    <form method="post">
+        <div class="singup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
+            <div class="h2">Registrate</div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                <input name="nombre" type="text" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                <input name="apellido" type="text" class="form-control" placeholder="Apellido">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <input name="correo" type="email" class="form-control" placeholder="Correo">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input name="password" type="password" class="form-control" placeholder="Password">
+            </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-            <input name="confirmar_password" type="password" class="form-control" placeholder="Confirme su Password" >
-        </div>
-        
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input name="confirmar_password" type="password" class="form-control" placeholder="Confirme su Password">
+            </div>
+
+            <div class="progress mb-3 d-none">
+                <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
+            </div>
 
 
-        <button class="btn btn-primary col-12">Registrate</button>
+
+            <button class="btn btn-primary col-12">Registrate</button>
             <div class="m-2"></div>
             ¿Ya tienes una cuenta?<a href="login.php">Inicia sesion</a>
 
-    </div>
+        </div>
     </form>
-<br>
-<br>
+    <br>
+    <br>
 
 
     <!-- footer -->
@@ -124,6 +128,41 @@
 
 
     <!-- Javascript -->
+    <script>
+        function send_data(form)
+
+        {
+            var ajax = XMLHttpRequest();
+
+            document.querySelector(".progress").classList.remove("d-none");
+
+            ajax.addEventListener('readystatechange', function(){
+
+                    if (ajax.readyState == 4) 
+                    {
+                        if (ajax.status == 200)
+                        {
+                        }else{
+                            console.log(ajax);
+                            alert("Ha ocurrido un error");
+                        }
+
+                    }
+            });
+
+        ajax.upload.addEventListener('progress', function(e) {
+
+
+            let percent = Math.round((e.loaded / e.total) * 100)
+            document.querySelector(".progress-bar").style.width = percent + "%";
+            document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
+        });
+
+
+        ajax.open('post', 'ajax.php', true);
+        ajax.send(form);
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
