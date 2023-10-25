@@ -55,8 +55,25 @@
         </div>
     </nav>
 
+    <form action="post">
+        <div class=" login col-md-6 border mx-auto mt-5 p-4 shadow">
+            <div class="h2">Inicia sesion</div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span>
+                <input name="email" type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input name="password" type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
 
-
+            <button class="btn btn-primary col-12">Login</button>
+            <div class="m-2"></div>
+            ¿No tienes una cuenta?<a href="signup.php">Registrate aqui</a>
+        </div>
+    </form>
+    <br>
+    <br>
 
 
     <!-- footer -->
