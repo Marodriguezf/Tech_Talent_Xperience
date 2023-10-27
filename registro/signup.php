@@ -55,7 +55,7 @@
         </div>
     </nav>
 
-    <form method="post">
+    <form method="post" onsubmit="myaction.collect_data(event, 'signup')">
         <div class="singup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
             <div class="h2">Registrate</div>
             <div class="input-group mb-3">
@@ -129,39 +129,67 @@
 
     <!-- Javascript -->
     <script>
-        function send_data(form)
+        var myaction = {
+            /* Recoge la información */
+            collect_data: function(e, data_type) {
+                e.preventDefault();
+                e.stopPropagation();
 
-        {
-            var ajax = XMLHttpRequest();
+                var inputs = document.querySelectorAll("form input");
+                let myform = new FormData();
+                myform.append('data_type',data_type);
 
-            document.querySelector(".progress").classList.remove("d-none");
+                for (var i = 0; i < inputs.length; i++) {
+                    myform.append(inputs[i].name, inputs[i].value);
+                }
 
-            ajax.addEventListener('readystatechange', function(){
+                myaction.send_data(myform);
 
-                    if (ajax.readyState == 4) 
-                    {
-                        if (ajax.status == 200)
-                        {
-                        }else{
+            },
+            /* Envia la informacion */
+            send_data:function (form)
+
+            {
+                var ajax = new XMLHttpRequest();
+
+                document.querySelector(".progress").classList.remove("d-none");
+
+                ajax.addEventListener('readystatechange', function() {
+
+                    if (ajax.readyState == 4) {
+                        if (ajax.status == 200) {
+                         
+                            myaction.handle_result(ajax.responseText);
+                        } else {
                             console.log(ajax);
                             alert("Ha ocurrido un error");
                         }
 
                     }
-            });
+                });
 
-        ajax.upload.addEventListener('progress', function(e) {
-
-
-            let percent = Math.round((e.loaded / e.total) * 100)
-            document.querySelector(".progress-bar").style.width = percent + "%";
-            document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
-        });
+                ajax.upload.addEventListener('progress', function(e) {
 
 
-        ajax.open('post', 'ajax.php', true);
-        ajax.send(form);
-        }
+                    let percent = Math.round((e.loaded / e.total) * 100)
+                    document.querySelector(".progress-bar").style.width = percent + "%";
+                    document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
+                });
+
+
+                ajax.open('post', 'ajax.php', true);
+                ajax.send(form);
+            },
+
+            handle_result:function (result)
+            {
+                console.log(result);
+                var obj = JSON.parse(result);
+                console.log(obj);
+            }
+
+        };
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
