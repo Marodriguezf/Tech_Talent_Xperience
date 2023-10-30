@@ -58,24 +58,28 @@
     <form method="post" onsubmit="myaction.collect_data(event, 'signup')">
         <div class="singup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
             <div class="h2">Registrate</div>
-            <div class="input-group mb-3">
+            <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
                 <input name="nombre" type="text" class="form-control" placeholder="Nombre">
             </div>
-            <div class="input-group mb-3">
+            <div><small class="js-error js-error-nombre text-danger"></small></div>
+            <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
                 <input name="apellido" type="text" class="form-control" placeholder="Apellido">
             </div>
-            <div class="input-group mb-3">
+            <div><small class="js-error js-error-apellido text-danger"></small></div>
+            <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
                 <input name="correo" type="email" class="form-control" placeholder="Correo">
             </div>
-            <div class="input-group mb-3">
+            <div><small class="js-error js-error-email text-danger"></small></div>
+            <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
                 <input name="password" type="password" class="form-control" placeholder="Password">
             </div>
+            <div><small class="js-error js-error-password text-danger"></small></div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
                 <input name="confirmar_password" type="password" class="form-control" placeholder="Confirme su Password">
             </div>
@@ -86,7 +90,7 @@
 
 
 
-            <button class="btn btn-primary col-12">Registrate</button>
+            <button class=" mt-3 btn btn-primary col-12">Registrate</button>
             <div class="m-2"></div>
             ¿Ya tienes una cuenta?<a href="login.php">Inicia sesion</a>
 
@@ -137,7 +141,7 @@
 
                 var inputs = document.querySelectorAll("form input");
                 let myform = new FormData();
-                myform.append('data_type',data_type);
+                myform.append('data_type', data_type);
 
                 for (var i = 0; i < inputs.length; i++) {
                     myform.append(inputs[i].name, inputs[i].value);
@@ -147,7 +151,7 @@
 
             },
             /* Envia la informacion */
-            send_data:function (form)
+            send_data: function(form)
 
             {
                 var ajax = new XMLHttpRequest();
@@ -158,7 +162,7 @@
 
                     if (ajax.readyState == 4) {
                         if (ajax.status == 200) {
-                         
+
                             myaction.handle_result(ajax.responseText);
                         } else {
                             console.log(ajax);
@@ -181,15 +185,33 @@
                 ajax.send(form);
             },
 
-            handle_result:function (result)
+            handle_result: function(result) 
             {
                 console.log(result);
                 var obj = JSON.parse(result);
-                console.log(obj);
+                if (obj.success) 
+                {
+                    alert("success");
+                } else {
+                    //Mensaje de error
+                    
+                    let error_inputs = document.querySelectorAll(".js-error");
+
+                    //Limpiar los errores
+                    for (var i = 0; i < error_inputs.length; i++) {
+                        error_inputs[i].innerHTML = "";
+                    }
+
+                    //Mostrar errores
+                    for (key in obj.errors) 
+                    {
+                        document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
+                    }
+                }
+
             }
 
         };
-
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
