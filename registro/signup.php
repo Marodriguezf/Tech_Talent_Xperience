@@ -72,7 +72,7 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
                 <input name="correo" type="email" class="form-control" placeholder="Correo">
             </div>
-            <div><small class="js-error js-error-email text-danger"></small></div>
+            <div><small class="js-error js-error-correo text-danger"></small></div>
             <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
                 <input name="password" type="password" class="form-control" placeholder="Password">
@@ -84,11 +84,9 @@
                 <input name="confirmar_password" type="password" class="form-control" placeholder="Confirme su Password">
             </div>
 
-            <div class="progress mb-3 d-none">
+            <div class="progress mb-3 mt-3 d-none">
                 <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
             </div>
-
-
 
             <button class=" mt-3 btn btn-primary col-12">Registrate</button>
             <div class="m-2"></div>
@@ -98,7 +96,7 @@
     </form>
     <br>
     <br>
-
+ 
 
     <!-- footer -->
     <footer class="pie-pagina">
@@ -191,7 +189,9 @@
                 var obj = JSON.parse(result);
                 if (obj.success) 
                 {
-                    alert("success");
+                    alert("Perfil Creado Exitosamente");
+                    //Se re dirige a la pagina de login
+                   // windw.location.href = 'login.php';
                 } else {
                     //Mensaje de error
                     
