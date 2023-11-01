@@ -133,7 +133,8 @@
     <script>
         var myaction = {
             /* Recoge la información */
-            collect_data: function(e, data_type) {
+            collect_data: function(e, data_type) 
+            {
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -144,7 +145,6 @@
                 for (var i = 0; i < inputs.length; i++) {
                     myform.append(inputs[i].name, inputs[i].value);
                 }
-
                 myaction.send_data(myform);
 
             },
@@ -190,8 +190,7 @@
                 if (obj.success) 
                 {
                     alert("Perfil Creado Exitosamente");
-                    //Se re dirige a la pagina de login
-                   // windw.location.href = 'login.php';
+                    window.location.href ='login.php';
                 } else {
                     //Mensaje de error
                     

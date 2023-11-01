@@ -55,16 +55,21 @@
         </div>
     </nav>
 
-    <form action="post">
+    <form method="post" onsubmit="myaction.collect_data(event, 'login')">
         <div class=" login col-md-6 border mx-auto mt-5 p-4 shadow">
             <div class="h2">Inicia sesion</div>
+            <div><small class="my-1 js-error-email text-danger"></small></div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span>
-                <input name="email" type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <input name="correo" type="email" class="form-control" placeholder="Correo">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                <input name="password" type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                <input name="password" type="password" class="form-control" placeholder="Password">
+            </div>
+
+            <div class="progress mb-3 mt-3 d-none">
+                <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
             </div>
 
             <button class="btn btn-primary col-12">Login</button>
@@ -108,6 +113,85 @@
 
 
     <!-- Javascript -->
+    <script>
+        var myaction = {
+            /* Recoge la información */
+            collect_data: function(e, data_type) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var inputs = document.querySelectorAll("form input");
+                let myform = new FormData();
+                myform.append('data_type', data_type);
+
+                for (var i = 0; i < inputs.length; i++) {
+                    myform.append(inputs[i].name, inputs[i].value);
+                }
+
+                myaction.send_data(myform);
+
+            },
+            /* Envia la informacion */
+            send_data: function(form)
+
+            {
+                var ajax = new XMLHttpRequest();
+
+                document.querySelector(".progress").classList.remove("d-none");
+
+                ajax.addEventListener('readystatechange', function() {
+
+                    if (ajax.readyState == 4) {
+                        if (ajax.status == 200) {
+
+                            myaction.handle_result(ajax.responseText);
+                        } else {
+                            console.log(ajax);
+                            alert("Ha ocurrido un error");
+                        }
+
+                    }
+                });
+
+                ajax.upload.addEventListener('progress', function(e) {
+
+
+                    let percent = Math.round((e.loaded / e.total) * 100)
+                    document.querySelector(".progress-bar").style.width = percent + "%";
+                    document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
+                });
+
+
+                ajax.open('post', 'ajax.php', true);
+                ajax.send(form);
+            },
+
+            handle_result: function(result) {
+                console.log(result);
+                var obj = JSON.parse(result);
+                if (obj.success) {
+                    alert("Perfil Creado Exitosamente");
+                    window.location.href = 'login.php';
+                } else {
+                    //Mensaje de error
+
+                    let error_inputs = document.querySelectorAll(".js-error");
+
+                    //Limpiar los errores
+                    for (var i = 0; i < error_inputs.length; i++) {
+                        error_inputs[i].innerHTML = "";
+                    }
+
+                    //Mostrar errores
+                    for (key in obj.errors) {
+                        document.querySelector(".js-error-" + key).innerHTML = obj.errors[key];
+                    }
+                }
+
+            }
+
+        };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
