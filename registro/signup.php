@@ -190,7 +190,7 @@
                 if (obj.success) 
                 {
                     alert("Perfil Creado Exitosamente");
-                    window.location.href ='login.php';
+                    window.location.href='../registro/login.php';
                 } else {
                     //Mensaje de error
                     

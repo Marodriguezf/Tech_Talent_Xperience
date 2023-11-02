@@ -58,11 +58,12 @@
     <form method="post" onsubmit="myaction.collect_data(event, 'login')">
         <div class=" login col-md-6 border mx-auto mt-5 p-4 shadow">
             <div class="h2">Inicia sesion</div>
-            <div><small class="my-1 js-error-email text-danger"></small></div>
+            <div><small class="my-1 js-error-correo text-danger"></small></div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
                 <input name="correo" type="email" class="form-control" placeholder="Correo">
             </div>
+            <div><small class="my-1 js-error-password text-danger"></small></div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
                 <input name="password" type="password" class="form-control" placeholder="Password">
@@ -114,13 +115,15 @@
 
     <!-- Javascript -->
     <script>
-        var myaction = {
+        var myaction = 
+        {
             /* Recoge la información */
-            collect_data: function(e, data_type) {
+            collect_data: function(e, data_type) 
+            {
                 e.preventDefault();
                 e.stopPropagation();
 
-                var inputs = document.querySelectorAll("form input");
+                var inputs = document.querySelectorAll("form input,form select");
                 let myform = new FormData();
                 myform.append('data_type', data_type);
 
@@ -169,9 +172,10 @@
             handle_result: function(result) {
                 console.log(result);
                 var obj = JSON.parse(result);
-                if (obj.success) {
-                    alert("Perfil Creado Exitosamente");
-                    window.location.href = 'login.php';
+                if (obj.success) 
+                {
+                    alert("Inicio de sesion exitoso");
+                    window.location.href='..../registro/index.php';
                 } else {
                     //Mensaje de error
 

@@ -1,4 +1,5 @@
 <?php
+$info = array('success' => false, 'errors' => array());
 
 $arr = [];
 $arr['correo'] = $_POST['correo'];
