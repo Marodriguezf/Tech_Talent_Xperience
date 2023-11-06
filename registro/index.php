@@ -1,3 +1,15 @@
+
+<?php
+	require './functions.php';
+
+	if(!is_logged_in())
+	{
+		redirect('login.php');
+	}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -80,15 +92,15 @@
                 </tr>
                 <tr>
                     <th>Nombre</th>
-                    <td>Gojo</td>
+                    <td>John</td>
                 </tr>
                 <tr>
                     <th>Apellido</th>
-                    <td>Satoru</td>
+                    <td>Doe</td>
                 </tr>
                 <tr>
                     <th>Correo</th>
-                    <td>satoru@gmail.com</td>
+                    <td>email@email.com</td>
                 </tr>
                 <tr>
                     <th colspan="2">Información Academica</th>

@@ -5,14 +5,16 @@
 // Validar nombre
 if (empty($_POST['nombre'])) {
     $info['errors']['nombre'] = "Se requiere un Nombre";
-} else if (!preg_match(" /^[\p{L}\s]+$/u ", $_POST['nombre'])) {
+} else 
+if (!preg_match(" /^[\p{L}\s]+$/u ", $_POST['nombre'])) {
     $info['errors']['nombre'] = "El nombre solo puede tener letras, no se permiten caracteres especiales o números";
 }
 
 // Validar apellido
 if (empty($_POST['apellido'])) {
     $info['errors']['apellido'] = "Se requiere un apellido";
-} else if (!preg_match(" /^[\p{L}\s]+$/u ", $_POST['apellido'])) {
+} else 
+if (!preg_match("/^[\p{L}\s]+$/u ", $_POST['apellido'])) {
     $info['errors']['apellido'] = "El apellido solo puede tener letras, no se permiten caracteres especiales o números";
 }
 
@@ -39,7 +41,7 @@ if (empty($info['errors'])) {
     $arr['nombre'] = $_POST['nombre'];
     $arr['apellido'] = $_POST['apellido'];
     $arr['correo'] = $_POST['correo'];
-    $arr['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $arr['password'] = ($_POST['password']);
 
 
     db_query("insert into registro_candidatos(nombre,apellido, correo, password) values(:nombre,:apellido, :correo, :password)", $arr);

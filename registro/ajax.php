@@ -1,5 +1,7 @@
 <?php
-require'functions.php';
+
+require 'functions.php';
+
 if (!empty($_POST['data_type'])) 
 {
     $info['data_type'] = $_POST['data_type'];
@@ -8,12 +10,12 @@ if (!empty($_POST['data_type']))
 
     if ($_POST['data_type'] == "signup") 
     {
-        require 'controlador/controlador_signup.php';
+        require './controlador/controlador_signup.php';
 
     }else
      if ($_POST['data_type'] == "login")
     {
-        require 'controlador/controlador_login.php';
+        require './controlador/controlador_login.php';
 
     }
 

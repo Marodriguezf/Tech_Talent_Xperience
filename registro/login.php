@@ -58,15 +58,15 @@
     <form method="post" onsubmit="myaction.collect_data(event, 'login')">
         <div class=" login col-md-6 border mx-auto mt-5 p-4 shadow">
             <div class="h2">Inicia sesion</div>
-            <div><small class="my-1 js-error-correo text-danger"></small></div>
+            <div><small class="my-1 js-error js-error-correo text-danger"></small></div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-                <input name="correo" type="email" class="form-control" placeholder="Correo">
+                <input name="correo" type="text" class="form-control" placeholder="Correo">
             </div>
-            <div><small class="my-1 js-error-password text-danger"></small></div>
+            <div><small class="my-1 js-error js-error-password text-danger"></small></div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                <input name="password" type="password" class="form-control" placeholder="Password">
+                <input name="password" type="text" class="form-control" placeholder="Password">
             </div>
 
             <div class="progress mb-3 mt-3 d-none">
@@ -115,87 +115,92 @@
 
     <!-- Javascript -->
     <script>
-        var myaction = 
-        {
-            /* Recoge la información */
-            collect_data: function(e, data_type) 
-            {
-                e.preventDefault();
-                e.stopPropagation();
+	
+	var myaction  = 
+	{
+		collect_data: function(e, data_type)
+		{
+			e.preventDefault();
+			e.stopPropagation();
 
-                var inputs = document.querySelectorAll("form input,form select");
-                let myform = new FormData();
-                myform.append('data_type', data_type);
+			var inputs = document.querySelectorAll("form input, form select");
+			let myform = new FormData();
+			myform.append('data_type',data_type);
 
-                for (var i = 0; i < inputs.length; i++) {
-                    myform.append(inputs[i].name, inputs[i].value);
-                }
+			for (var i = 0; i < inputs.length; i++) {
 
-                myaction.send_data(myform);
+				myform.append(inputs[i].name, inputs[i].value);
+			}
 
-            },
-            /* Envia la informacion */
-            send_data: function(form)
+			myaction.send_data(myform);
+		},
 
-            {
-                var ajax = new XMLHttpRequest();
+		send_data: function (form)
+		{
 
-                document.querySelector(".progress").classList.remove("d-none");
+			var ajax = new XMLHttpRequest();
 
-                ajax.addEventListener('readystatechange', function() {
+			document.querySelector(".progress").classList.remove("d-none");
 
-                    if (ajax.readyState == 4) {
-                        if (ajax.status == 200) {
+			//reset the prog bar
+			document.querySelector(".progress-bar").style.width = "0%";
+			document.querySelector(".progress-bar").innerHTML = "Working... 0%";
 
-                            myaction.handle_result(ajax.responseText);
-                        } else {
-                            console.log(ajax);
-                            alert("Ha ocurrido un error");
-                        }
+			ajax.addEventListener('readystatechange', function(){
 
-                    }
-                });
+				if(ajax.readyState == 4)
+				{
+					if(ajax.status == 200)
+					{
+						//all good
+						myaction.handle_result(ajax.responseText);
+					}else{
+						console.log(ajax);
+						alert("An error occurred");
+					}
+				}
+			});
 
-                ajax.upload.addEventListener('progress', function(e) {
+			ajax.upload.addEventListener('progress', function(e){
 
+				let percent = Math.round((e.loaded / e.total) * 100);
+				document.querySelector(".progress-bar").style.width = percent + "%";
+				document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
+			});
 
-                    let percent = Math.round((e.loaded / e.total) * 100)
-                    document.querySelector(".progress-bar").style.width = percent + "%";
-                    document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
-                });
+			ajax.open('post','ajax.php', true);
+			ajax.send(form);
+		},
 
+		handle_result: function (result)
+		{
+			console.log(result);
+			var obj = JSON.parse(result);
+			if(obj.success)
+			{
+				alert("Login successfull!");
+				window.location.href = 'index.php';
+			}else{
 
-                ajax.open('post', 'ajax.php', true);
-                ajax.send(form);
-            },
+				//show errors
+				let error_inputs = document.querySelectorAll(".js-error");
 
-            handle_result: function(result) {
-                console.log(result);
-                var obj = JSON.parse(result);
-                if (obj.success) 
-                {
-                    alert("Inicio de sesion exitoso");
-                    window.location.href='..../registro/index.php';
-                } else {
-                    //Mensaje de error
+				//empty all errors
+				for (var i = 0; i < error_inputs.length; i++) {
+					error_inputs[i].innerHTML = "";
+				}
 
-                    let error_inputs = document.querySelectorAll(".js-error");
+				//display errors
+				for(key in obj.errors)
+				{
+					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
+				}
+			}
+		}
+	};
 
-                    //Limpiar los errores
-                    for (var i = 0; i < error_inputs.length; i++) {
-                        error_inputs[i].innerHTML = "";
-                    }
+</script>
 
-                    //Mostrar errores
-                    for (key in obj.errors) {
-                        document.querySelector(".js-error-" + key).innerHTML = obj.errors[key];
-                    }
-                }
-
-            }
-
-        };
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
