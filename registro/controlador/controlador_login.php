@@ -14,7 +14,7 @@
 		{
 			//password correct
 			$info['success'] 	= true;
-			
+			$_SESSION['PROFILE'] =$row;
 		}else
 		{
 			$info['errors']['email'] = "Wrong email or password";

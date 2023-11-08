@@ -1,4 +1,5 @@
 <?php
+session_start();
 function db_query(string $query, array $data = array())
 {
 	$string = "mysql:hostname=localhost;dbname=talento";
@@ -19,3 +20,19 @@ function db_query(string $query, array $data = array())
 	return false;
 }
 
+function is_logged_in():bool
+{
+
+	if(!empty($_SESSION['PROFILE']))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+function redirect($path):void
+{
+	header("Location: $path");
+	die;
+}

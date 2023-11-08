@@ -178,7 +178,7 @@
 			var obj = JSON.parse(result);
 			if(obj.success)
 			{
-				alert("Login successfull!");
+				alert("Ingreso exitoso");
 				window.location.href = 'index.php';
 			}else{
 

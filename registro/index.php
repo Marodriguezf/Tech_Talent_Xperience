@@ -1,4 +1,16 @@
+<?php
 
+require 'functions.php';
+
+
+if (!is_logged_in()) {
+    redirect('login.php');
+}
+
+$id = $_GET['id'] ?? $_SESSION['PROFILE']['id_candidato'];
+
+$row = db_query("select * from registro_candidatos where id_candidato = :id_candidato limit 1", ['id_candidato' => $id]);
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -57,94 +69,96 @@
     </nav>
 
     <!-- Perfil candidato -->
+    <?php if (!empty($row)) : ?>
+        <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
+            <div class="h1">Perfil candidato</div>
+            <div class="  foto_perfil">
+                <img src="./imagenes/foto_prueba.webp" class="img-fluid rounded" alt="">
+            </div>
+            <div>
+                <a href="perfil_actualizar.php">
+                    <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
+                </a>
+                <a href="perfil_eliminar.php">
+                    <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
+                </a>
+                <a href="logout.php">
+                    <button class="mx-auto m-1 btn btn-info text-white">Cerrar sesion</button>
+                </a>
+            </div>
+            <div>
+                <table class="table table-striped">
+                    <tr>
+                        <th colspan="2">Información Basica</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>John</td>
+                    </tr>
+                    <tr>
+                        <th>Apellido</th>
+                        <td>Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td>email@email.com</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Información Academica</th>
+                    </tr>
+                    <tr>
+                        <th>Universidad</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Carrera</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Semestre</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Idiomas</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Ubicación</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>CV</th>
+                        <td><input type="file" name=""></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Experiencia laboral (opcional)</th>
+                    </tr>
+                    <tr>
+                        <th>Empresa</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de inicio</th>
+                        <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha fin</th>
+                        <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
+                    </tr>
+                    <tr>
+                        <th>Funciones</th>
+                        <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
+                    </tr>
 
-    <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
-        <div class="h1">Perfil candidato</div>
-        <div class="  foto_perfil">
-            <img src="./imagenes/foto_prueba.webp" class="img-fluid rounded" alt="">
+                </table>
+            </div>
         </div>
-        <div>
-            <a href="perfil_actualizar.php">
-                <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
-            </a>
-            <a href="perfil_eliminar.php">
-                <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
-            </a>
-            <a href="logout.php">
-                <button class="mx-auto m-1 btn btn-info text-white">Cerrar sesion</button>
-            </a>
-        </div>
-        <div>
-            <table class="table table-striped">
-                <tr>
-                    <th colspan="2">Información Basica</th>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <td>John</td>
-                </tr>
-                <tr>
-                    <th>Apellido</th>
-                    <td>Doe</td>
-                </tr>
-                <tr>
-                    <th>Correo</th>
-                    <td>email@email.com</td>
-                </tr>
-                <tr>
-                    <th colspan="2">Información Academica</th>
-                </tr>
-                <tr>
-                    <th>Universidad</th>
-                    <td>Escuela Tecnica de magia</td>
-                </tr>
-                <tr>
-                    <th>Carrera</th>
-                    <td>Avanzada</td>
-                </tr>
-                <tr>
-                    <th>Semestre</th>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <th>Idiomas</th>
-                    <td>Japones, ingles</td>
-                </tr>
-                <tr>
-                    <th>Ubicación</th>
-                    <td>tokio</td>
-                </tr>
-                <tr>
-                    <th>CV</th>
-                    <td><input type="file" name=""></td>
-                </tr>
-                <tr>
-                    <th colspan="2">Experiencia laboral (opcional)</th>
-                </tr>
-                <tr>
-                    <th>Empresa</th>
-                    <td>Escuela de magia</td>
-                </tr>
-                <tr>
-                    <th>Fecha de inicio</th>
-                    <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
-                </tr>
-                <tr>
-                    <th>Fecha fin</th>
-                    <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
-                </tr>
-                <tr>
-                    <th>Funciones</th>
-                    <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
-                </tr>
-
-            </table>
-        </div>
-
-
-    </div>
-
-
+    <?php else : ?>
+        <div class="text-center alert alert-danger">el perfil no esta disponible</div>
+        <a href="index.php">
+            <button class="btn btn-primary m-4">Inicio</button>
+        </a>
+    <?php endif; ?>
 
 
     <!-- footer -->
