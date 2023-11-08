@@ -131,87 +131,91 @@
 
     <!-- Javascript -->
     <script>
-        var myaction = {
-            /* Recoge la información */
-            collect_data: function(e, data_type) 
-            {
-                e.preventDefault();
-                e.stopPropagation();
+	
+	var myaction  = 
+	{
+		collect_data: function(e, data_type)
+		{
+			e.preventDefault();
+			e.stopPropagation();
 
-                var inputs = document.querySelectorAll("form input");
-                let myform = new FormData();
-                myform.append('data_type', data_type);
+			var inputs = document.querySelectorAll("form input, form select");
+			let myform = new FormData();
+			myform.append('data_type',data_type);
 
-                for (var i = 0; i < inputs.length; i++) {
-                    myform.append(inputs[i].name, inputs[i].value);
-                }
-                myaction.send_data(myform);
+			for (var i = 0; i < inputs.length; i++) {
 
-            },
-            /* Envia la informacion */
-            send_data: function(form)
+				myform.append(inputs[i].name, inputs[i].value);
+			}
 
-            {
-                var ajax = new XMLHttpRequest();
+			myaction.send_data(myform);
+		},
 
-                document.querySelector(".progress").classList.remove("d-none");
+		send_data: function (form)
+		{
 
-                ajax.addEventListener('readystatechange', function() {
+			var ajax = new XMLHttpRequest();
 
-                    if (ajax.readyState == 4) {
-                        if (ajax.status == 200) {
+			document.querySelector(".progress").classList.remove("d-none");
 
-                            myaction.handle_result(ajax.responseText);
-                        } else {
-                            console.log(ajax);
-                            alert("Ha ocurrido un error");
-                        }
+			//reset the prog bar
+			document.querySelector(".progress-bar").style.width = "0%";
+			document.querySelector(".progress-bar").innerHTML = "Working... 0%";
 
-                    }
-                });
+			ajax.addEventListener('readystatechange', function(){
 
-                ajax.upload.addEventListener('progress', function(e) {
+				if(ajax.readyState == 4)
+				{
+					if(ajax.status == 200)
+					{
+						//all good
+						myaction.handle_result(ajax.responseText);
+					}else{
+						console.log(ajax);
+						alert("An error occurred");
+					}
+				}
+			});
 
+			ajax.upload.addEventListener('progress', function(e){
 
-                    let percent = Math.round((e.loaded / e.total) * 100)
-                    document.querySelector(".progress-bar").style.width = percent + "%";
-                    document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
-                });
+				let percent = Math.round((e.loaded / e.total) * 100);
+				document.querySelector(".progress-bar").style.width = percent + "%";
+				document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
+			});
 
+			ajax.open('post','ajax.php', true);
+			ajax.send(form);
+		},
 
-                ajax.open('post', 'ajax.php', true);
-                ajax.send(form);
-            },
+		handle_result: function (result)
+		{
+			console.log(result);
+			var obj = JSON.parse(result);
+			if(obj.success)
+			{
+				alert("Usuario registrado correctamente");
+				window.location.href = 'login.php';
+			}else{
 
-            handle_result: function(result) 
-            {
-                console.log(result);
-                var obj = JSON.parse(result);
-                if (obj.success) 
-                {
-                    alert("Perfil Creado Exitosamente");
-                    window.location.href='../registro/login.php';
-                } else {
-                    //Mensaje de error
-                    
-                    let error_inputs = document.querySelectorAll(".js-error");
+				//show errors
+				let error_inputs = document.querySelectorAll(".js-error");
 
-                    //Limpiar los errores
-                    for (var i = 0; i < error_inputs.length; i++) {
-                        error_inputs[i].innerHTML = "";
-                    }
+				//empty all errors
+				for (var i = 0; i < error_inputs.length; i++) {
+					error_inputs[i].innerHTML = "";
+				}
 
-                    //Mostrar errores
-                    for (key in obj.errors) 
-                    {
-                        document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
-                    }
-                }
+				//display errors
+				for(key in obj.errors)
+				{
+					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
+				}
+			}
+		}
+	};
 
-            }
-
-        };
-    </script>
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 

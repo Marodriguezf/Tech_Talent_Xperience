@@ -41,7 +41,7 @@ if (empty($info['errors'])) {
     $arr['nombre'] = $_POST['nombre'];
     $arr['apellido'] = $_POST['apellido'];
     $arr['correo'] = $_POST['correo'];
-    $arr['password'] = ($_POST['password']);
+    $arr['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 
     db_query("insert into registro_candidatos(nombre,apellido, correo, password) values(:nombre,:apellido, :correo, :password)", $arr);

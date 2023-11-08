@@ -56,18 +56,18 @@
     </nav>
 
     <form method="post" onsubmit="myaction.collect_data(event, 'login')">
-        <div class=" login col-md-6 border mx-auto mt-5 p-4 shadow">
-            <div class="h2">Inicia sesion</div>
-            <div><small class="my-1 js-error js-error-correo text-danger"></small></div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-                <input name="correo" type="text" class="form-control" placeholder="Correo">
-            </div>
-            <div><small class="my-1 js-error js-error-password text-danger"></small></div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                <input name="password" type="text" class="form-control" placeholder="Password">
-            </div>
+    <div class="login col-md-6 border mx-auto mt-5 p-4 shadow">
+        <div class="h2">Inicia sesión</div>
+        <div><small class="my-1 js-error js-error-correo text-danger"></small></div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+            <input name="correo" id="correo" type="email" class="form-control" placeholder="Correo">
+        </div>
+        <div><small class="my-1 js-error js-error-password text-danger"></small></div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+            <input name="password" id="password" type="password" class="form-control" placeholder="Contraseña">
+        </div>
 
             <div class="progress mb-3 mt-3 d-none">
                 <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
