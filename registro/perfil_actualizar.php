@@ -1,11 +1,19 @@
 <?php
-	require './functions.php';
 
-	if(!is_logged_in())
-	{
-		redirect('login.php');
-	}
+require 'functions.php';
 
+
+if (!is_logged_in()) {
+    redirect('login.php');
+}
+
+$id = $_GET['id'] ?? $_SESSION['PROFILE']['id_candidato'];
+
+$row = db_query("select * from registro_candidatos where id_candidato = :id_candidato limit 1", ['id_candidato' => $id]);
+
+if ($row) {
+    $row = $row[0];
+}
 
 ?>
 
@@ -67,96 +75,119 @@
     </nav>
 
     <!-- Perfil candidato -->
-
-    <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
-        <div class="h1">Actualizar Perfil </div>
-        <div class="  foto_perfil">
-            <img src="./imagenes/profile_picture.jpg" class="js-image img-fluid rounded" alt="">
-        </div>
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Carga una nueva imagen</label>
-            <input onchange="display_image(this.files[0])" class="form-control" type="file" id="formFile">
-        </div>
-        <form method="post">
-            <table class="table table-striped">
-                <tr>
-                    <th colspan="2">Información Basica</th>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <td><input type="text" class="form-control" name="nombre" placeholder="Nombre"></td>
-                </tr>
-                <tr>
-                    <th>Apellido</th>
-                    <td><input type="text" class="form-control" name="apellido" placeholder="Apellidos"></td>
-                </tr>
-                <tr>
-                    <th>Correo</th>
-                    <td><input type="email" class="form-control" name="correo" placeholder="Correo"></td>
-                </tr>
-                <tr>
-                    <th colspan="2">Información Academica</th>
-                </tr>
-                <tr>
-                    <th>Universidad/Institucion</th>
-                    <td><input type="text" class="form-control" name="universidad" placeholder="Universidad"></td>
-                </tr>
-                <tr>
-                    <th>Carrera</th>
-                    <td><input type="text" class="form-control" name="carrera" placeholder="Carrera"></td>
-                </tr>
-                <tr>
-                    <th>Semestre</th>
-                    <td><input type="number" class="form-control" name="carrera" placeholder="Semestre"></td>
-                </tr>
-                <tr>
-                    <th>Idiomas</th>
-                    <td><input type="text" class="form-control" name="idiomas" placeholder="Idiomas"></td>
-
-                </tr>
-                <tr>
-                    <th>Ubicación</th>
-                    <td><input type="text" class="form-control" name="ubicacion" placeholder="Ubicacion"></td>
-                </tr>
-                <tr>
-                    <th>CV</th>
-                    <td><input type="file" name=""></td>
-                </tr>
-                <tr>
-                    <th colspan="2">Experiencia laboral (opcional)</th>
-                </tr>
-                <tr>
-                    <th>Empresa</th>
-                    <td><input type="text" class="form-control" name="empresa" placeholder="Nombre empresa"></td>
-                </tr>
-                <tr>
-                    <th>Fecha inicio</th>
-                    <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
-                </tr>
-                <tr>
-                    <th>Fecha fin</th>
-                    <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
-                </tr>
-                <tr>
-                    <th>Funciones</th>
-                    <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
-                </tr>
-
-            </table>
-
-            <div class="p-2">
-            <button class="btn btn-primary  float-end">Guardar</button>
-            <a href="index.php">
-            <label class="btn btn-secondary">volver</button>
-            </a>
-
+    <?php if (!empty($row)) : ?>
+        <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
+            <div class="h1">Actualizar Perfil </div>
+            <div class="  foto_perfil">
+                <img src="<?= get_image($row['foto']) ?>"  class="js-image img-fluid rounded" alt="">
             </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Carga una nueva imagen</label>
+                <input onchange="display_image(this.files[0])" class="form-control" type="file" id="formFile">
+            </div>
+            <form method="post" onsubmit="myaction.collect_data(event, 'perfil_actualizar')">
+                <table class="table table-striped">
+                    <tr>
+                        <th colspan="2">Información Basica</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td><input value="<?=$row['nombre']?>" type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <div><small class="js-error js-error-nombre text-danger"></small></div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>Apellido</th>
+                        <td><input value="<?=$row['apellido']?>" type="text" class="form-control" name="apellido" placeholder="Apellidos">
+                        <div><small class="js-error js-error-apellido text-danger"></small></div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td><input value="<?=$row['correo']?>" type="email" class="form-control" name="correo" placeholder="Correo">
+                        <div><small class="js-error js-error-correo text-danger"></small></div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>password</th>
+                        <td><input  type="text" class="form-control" name="password" placeholder="password">
+                        <div><small class="js-error js-error-password text-danger"></small></div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>confirmar password</th>
+                        <td><input  type="text" class="form-control" name="password" placeholder="password"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Información Academica</th>
+                    </tr>
+                    <tr>
+                        <th>Universidad/Institucion</th>
+                        <td><input type="text" class="form-control" name="universidad" placeholder="Universidad"></td>
+                    </tr>
+                    <tr>
+                        <th>Carrera</th>
+                        <td><input type="text" class="form-control" name="carrera" placeholder="Carrera"></td>
+                    </tr>
+                    <tr>
+                        <th>Semestre</th>
+                        <td><input type="number" class="form-control" name="carrera" placeholder="Semestre"></td>
+                    </tr>
+                    <tr>
+                        <th>Idiomas</th>
+                        <td><input type="text" class="form-control" name="idiomas" placeholder="Idiomas"></td>
 
-        </form>
-    </div>
+                    </tr>
+                    <tr>
+                        <th>Ubicación</th>
+                        <td><input type="text" class="form-control" name="ubicacion" placeholder="Ubicacion"></td>
+                    </tr>
+                    <tr>
+                        <th>CV</th>
+                        <td><input type="file" name=""></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Experiencia laboral (opcional)</th>
+                    </tr>
+                    <tr>
+                        <th>Empresa</th>
+                        <td><input type="text" class="form-control" name="empresa" placeholder="Nombre empresa"></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha inicio</th>
+                        <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha fin</th>
+                        <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
+                    </tr>
+                    <tr>
+                        <th>Funciones</th>
+                        <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
+                    </tr>
+
+                </table>
+
+                <div class="p-2">
+                    <button class="btn btn-primary  float-end">Guardar</button>
+                    <a href="index.php">
+                        <label class="btn btn-secondary">volver</button>
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
 
 
-    </div>
+        </div>
+    <?php else : ?>
+        <div class="text-center alert alert-danger">el perfil no esta disponible</div>
+        <a href="index.php">
+            <button class="btn btn-primary m-4">Inicio</button>
+        </a>
+    <?php endif; ?>
 
 
 
@@ -199,7 +230,91 @@
             var img = document.querySelector(".js-image");
             img.src = URL.createObjectURL(file);
         }
-    </script>
+	
+	var myaction  = 
+	{
+		collect_data: function(e, data_type)
+		{
+			e.preventDefault();
+			e.stopPropagation();
+
+			var inputs = document.querySelectorAll("form input, form select");
+			let myform = new FormData();
+			myform.append('data_type',data_type);
+
+			for (var i = 0; i < inputs.length; i++) {
+
+				myform.append(inputs[i].name, inputs[i].value);
+			}
+
+			myaction.send_data(myform);
+		},
+
+		send_data: function (form)
+		{
+
+			var ajax = new XMLHttpRequest();
+
+			document.querySelector(".progress").classList.remove("d-none");
+
+			//reset the prog bar
+			document.querySelector(".progress-bar").style.width = "0%";
+			document.querySelector(".progress-bar").innerHTML = "Working... 0%";
+
+			ajax.addEventListener('readystatechange', function(){
+
+				if(ajax.readyState == 4)
+				{
+					if(ajax.status == 200)
+					{
+						//all good
+						myaction.handle_result(ajax.responseText);
+					}else{
+						console.log(ajax);
+						alert("An error occurred");
+					}
+				}
+			});
+
+			ajax.upload.addEventListener('progress', function(e){
+
+				let percent = Math.round((e.loaded / e.total) * 100);
+				document.querySelector(".progress-bar").style.width = percent + "%";
+				document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
+			});
+
+			ajax.open('post','ajax.php', true);
+			ajax.send(form);
+		},
+
+		handle_result: function (result)
+		{
+			console.log(result);
+			var obj = JSON.parse(result);
+			if(obj.success)
+			{
+				alert("Cambios Guardados correctamente");
+				window.location.href = 'perfil_actualizar.php';
+			}else{
+
+				//show errors
+				let error_inputs = document.querySelectorAll(".js-error");
+
+				//empty all errors
+				for (var i = 0; i < error_inputs.length; i++) {
+					error_inputs[i].innerHTML = "";
+				}
+
+				//display errors
+				for(key in obj.errors)
+				{
+					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
+				}
+			}
+		}
+	};
+
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 

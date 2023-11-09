@@ -10,6 +10,11 @@ if (!is_logged_in()) {
 $id = $_GET['id'] ?? $_SESSION['PROFILE']['id_candidato'];
 
 $row = db_query("select * from registro_candidatos where id_candidato = :id_candidato limit 1", ['id_candidato' => $id]);
+
+if ($row) {
+    $row = $row[0];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,18 +78,20 @@ $row = db_query("select * from registro_candidatos where id_candidato = :id_cand
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Perfil candidato</div>
             <div class="  foto_perfil">
-                <img src="./imagenes/foto_prueba.webp" class="img-fluid rounded" alt="">
+                <img src="<?= get_image($row['foto']) ?>" class="img-fluid rounded" alt="">
             </div>
             <div>
-                <a href="perfil_actualizar.php">
-                    <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
-                </a>
-                <a href="perfil_eliminar.php">
-                    <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
-                </a>
-                <a href="logout.php">
-                    <button class="mx-auto m-1 btn btn-info text-white">Cerrar sesion</button>
-                </a>
+                <?php if(user('id_candidato') == $row['id_candidato']):?>
+                    <a href="perfil_actualizar.php">
+                        <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
+                    </a>
+                    <a href="perfil_eliminar.php">
+                        <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
+                    </a>
+                    <a href="logout.php">
+                        <button class="mx-auto m-1 btn btn-info text-white">Cerrar sesion</button>
+                    </a>
+                <?php endif;?>
             </div>
             <div>
                 <table class="table table-striped">
@@ -93,15 +100,15 @@ $row = db_query("select * from registro_candidatos where id_candidato = :id_cand
                     </tr>
                     <tr>
                         <th>Nombre</th>
-                        <td>John</td>
+                        <td><?= esc($row['nombre']) ?></td>
                     </tr>
                     <tr>
                         <th>Apellido</th>
-                        <td>Doe</td>
+                        <td><?= esc($row['apellido']) ?></td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td>email@email.com</td>
+                        <td><?= esc($row['correo']) ?></td>
                     </tr>
                     <tr>
                         <th colspan="2">Información Academica</th>
