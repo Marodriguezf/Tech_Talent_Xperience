@@ -13,6 +13,11 @@ if (!empty($_POST['data_type']))
         require './controlador/controlador_signup.php';
 
     }else
+    if($_POST['data_type'] == "perfil_actualizar") 
+    {
+        require './perfil_actualizar.php';
+
+    }else
      if ($_POST['data_type'] == "login")
     {
         require './controlador/controlador_login.php';
