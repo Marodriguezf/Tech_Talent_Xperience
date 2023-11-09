@@ -79,7 +79,7 @@ if ($row) {
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Actualizar Perfil </div>
             <div class="  foto_perfil">
-                <img src="<?= get_image($row['foto']) ?>"  class="js-image img-fluid rounded" alt="">
+                <img src="<?= get_image($row['foto']) ?>" class="js-image img-fluid rounded" alt="">
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Carga una nueva imagen</label>
@@ -92,31 +92,31 @@ if ($row) {
                     </tr>
                     <tr>
                         <th>Nombre</th>
-                        <td><input value="<?=$row['nombre']?>" type="text" class="form-control" name="nombre" placeholder="Nombre">
-                        <div><small class="js-error js-error-nombre text-danger"></small></div>
-                    </td>
+                        <td><input value="<?= $row['nombre'] ?>" type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            <div><small class="js-error js-error-nombre text-danger"></small></div>
+                        </td>
                     </tr>
                     <tr>
                         <th>Apellido</th>
-                        <td><input value="<?=$row['apellido']?>" type="text" class="form-control" name="apellido" placeholder="Apellidos">
-                        <div><small class="js-error js-error-apellido text-danger"></small></div>
-                    </td>
+                        <td><input value="<?= $row['apellido'] ?>" type="text" class="form-control" name="apellido" placeholder="Apellidos">
+                            <div><small class="js-error js-error-apellido text-danger"></small></div>
+                        </td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td><input value="<?=$row['correo']?>" type="email" class="form-control" name="correo" placeholder="Correo">
-                        <div><small class="js-error js-error-correo text-danger"></small></div>
-                    </td>
+                        <td><input value="<?= $row['correo'] ?>" type="email" class="form-control" name="correo" placeholder="Correo">
+                            <div><small class="js-error js-error-correo text-danger"></small></div>
+                        </td>
                     </tr>
                     <tr>
                         <th>password</th>
-                        <td><input  type="text" class="form-control" name="password" placeholder="password">
-                        <div><small class="js-error js-error-password text-danger"></small></div>
-                    </td>
+                        <td><input type="text" class="form-control" name="password" placeholder="password">
+                            <div><small class="js-error js-error-password text-danger"></small></div>
+                        </td>
                     </tr>
                     <tr>
                         <th>confirmar password</th>
-                        <td><input  type="text" class="form-control" name="password" placeholder="password"></td>
+                        <td><input type="text" class="form-control" name="password" placeholder="password"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Información Academica</th>
@@ -167,6 +167,11 @@ if ($row) {
                     </tr>
 
                 </table>
+
+                <div class="progress mb-3 mt-3 d-none">
+                    <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
+                </div>
+
 
                 <div class="p-2">
                     <button class="btn btn-primary  float-end">Guardar</button>
@@ -230,91 +235,82 @@ if ($row) {
             var img = document.querySelector(".js-image");
             img.src = URL.createObjectURL(file);
         }
-	
-	var myaction  = 
-	{
-		collect_data: function(e, data_type)
-		{
-			e.preventDefault();
-			e.stopPropagation();
 
-			var inputs = document.querySelectorAll("form input, form select");
-			let myform = new FormData();
-			myform.append('data_type',data_type);
+        var myaction = {
+            collect_data: function(e, data_type) {
+                e.preventDefault();
+                e.stopPropagation();
 
-			for (var i = 0; i < inputs.length; i++) {
+                var inputs = document.querySelectorAll("form input, form select");
+                let myform = new FormData();
+                myform.append('data_type', data_type);
 
-				myform.append(inputs[i].name, inputs[i].value);
-			}
+                for (var i = 0; i < inputs.length; i++) {
 
-			myaction.send_data(myform);
-		},
+                    myform.append(inputs[i].name, inputs[i].value);
+                }
 
-		send_data: function (form)
-		{
+                myaction.send_data(myform);
+            },
 
-			var ajax = new XMLHttpRequest();
+            send_data: function(form) {
 
-			document.querySelector(".progress").classList.remove("d-none");
+                var ajax = new XMLHttpRequest();
 
-			//reset the prog bar
-			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "Working... 0%";
+                document.querySelector(".progress").classList.remove("d-none");
 
-			ajax.addEventListener('readystatechange', function(){
+                //reset the prog bar
+                document.querySelector(".progress-bar").style.width = "0%";
+                document.querySelector(".progress-bar").innerHTML = "Working... 0%";
 
-				if(ajax.readyState == 4)
-				{
-					if(ajax.status == 200)
-					{
-						//all good
-						myaction.handle_result(ajax.responseText);
-					}else{
-						console.log(ajax);
-						alert("An error occurred");
-					}
-				}
-			});
+                ajax.addEventListener('readystatechange', function() {
 
-			ajax.upload.addEventListener('progress', function(e){
+                    if (ajax.readyState == 4) {
+                        if (ajax.status == 200) {
+                            //all good
+                            myaction.handle_result(ajax.responseText);
+                        } else {
+                            console.log(ajax);
+                            alert("An error occurred");
+                        }
+                    }
+                });
 
-				let percent = Math.round((e.loaded / e.total) * 100);
-				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
-			});
+                ajax.upload.addEventListener('progress', function(e) {
 
-			ajax.open('post','ajax.php', true);
-			ajax.send(form);
-		},
+                    let percent = Math.round((e.loaded / e.total) * 100);
+                    document.querySelector(".progress-bar").style.width = percent + "%";
+                    document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
+                });
 
-		handle_result: function (result)
-		{
-			console.log(result);
-			var obj = JSON.parse(result);
-			if(obj.success)
-			{
-				alert("Cambios Guardados correctamente");
-				window.location.href = 'perfil_actualizar.php';
-			}else{
+                ajax.open('post', 'ajax.php', true);
+                ajax.send(form);
+            },
 
-				//show errors
-				let error_inputs = document.querySelectorAll(".js-error");
+            handle_result: function(result) {
+                console.log(result);
+                var obj = JSON.parse(result);
+                if (obj.success) {
+                    alert("Cambios Guardados correctamente");
+                    window.location.reload();
+                } else {
 
-				//empty all errors
-				for (var i = 0; i < error_inputs.length; i++) {
-					error_inputs[i].innerHTML = "";
-				}
+                    //show errors
+                    let error_inputs = document.querySelectorAll(".js-error");
 
-				//display errors
-				for(key in obj.errors)
-				{
-					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
-				}
-			}
-		}
-	};
+                    //empty all errors
+                    for (var i = 0; i < error_inputs.length; i++) {
+                        error_inputs[i].innerHTML = "";
+                    }
 
-</script>
+                    //display errors
+                    for (key in obj.errors) {
+                        document.querySelector(".js-error-" + key).innerHTML = obj.errors[key];
+                    }
+                }
+            }
+        };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 

@@ -15,7 +15,7 @@ if (!empty($_POST['data_type']))
     }else
     if($_POST['data_type'] == "perfil_actualizar") 
     {
-        require './perfil_actualizar.php';
+        require './controlador/controlador_actualizar_perfil.php';
 
     }else
      if ($_POST['data_type'] == "login")

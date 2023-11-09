@@ -26,14 +26,18 @@ if (empty($_POST['correo'])) {
 }
 
 // Validar password
-if (!empty($_POST['password'])) {
-
-} if ($_POST['password'] !== $_POST['confirmar_password']) {
-    $info['errors']['password'] = "El password no coincide";
-}else 
-if(strlen($_POST['password']) < 8) 
+if (!empty($_POST['password'])) 
 {
-    $info['errors']['password'] = "El password debe tener al menos 8 caracteres";
+
+    if ($_POST['password'] !== $_POST['confirmar_password']) 
+    {
+        $info['errors']['password'] = "El password no coincide";
+    }else 
+    if(strlen($_POST['password']) < 8) 
+    {
+        $info['errors']['password'] = "El password debe tener al menos 8 caracteres";
+    }
+
 }
 
 if (empty($info['errors'])) 
@@ -44,10 +48,15 @@ if (empty($info['errors']))
     $arr['nombre'] = $_POST['nombre'];
     $arr['apellido'] = $_POST['apellido'];
     $arr['correo'] = $_POST['correo'];
-    $arr['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    if (!empty($_POST['password'])) 
+    {
 
-    db_query("insert into registro_candidatos(nombre,apellido, correo, password) values(:nombre,:apellido, :correo, :password)", $arr);
-
+        $arr['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        db_query("update registro_candidatos set nombre = :nombre,apellido = :apellido, correo = :correo, password = :password", $arr);
+    }else{
+        db_query("update registro_candidatos set nombre = :nombre,apellido = :apellido, correo = :correo", $arr);
+    }
+    $_SESSION['PROFILE'] = $row;
     $info['success'] = true;
 }
