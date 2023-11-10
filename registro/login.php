@@ -144,7 +144,7 @@
 
 			//reset the prog bar
 			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "Working... 0%";
+			document.querySelector(".progress-bar").innerHTML = "En proceso... 0%";
 
 			ajax.addEventListener('readystatechange', function(){
 
@@ -165,7 +165,7 @@
 
 				let percent = Math.round((e.loaded / e.total) * 100);
 				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "Working..." + percent + "%";
+				document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
 			});
 
 			ajax.open('post','ajax.php', true);
