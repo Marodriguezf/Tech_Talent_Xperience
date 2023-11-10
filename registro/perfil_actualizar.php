@@ -83,8 +83,9 @@ if ($row) {
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Carga una nueva imagen</label>
-                <input onchange="display_image(this.files[0])" class="form-control" type="file" id="formFile">
+                <input onchange="display_image(this.files[0])" class="js-image-input form-control" type="file" id="formFile">
             </div>
+            <div><small class="js-error js-error-image text-danger"></small></div>
             <form method="post" onsubmit="myaction.collect_data(event, 'perfil_actualizar')">
                 <table class="table table-striped">
                     <tr>
@@ -231,9 +232,13 @@ if ($row) {
     <!-- Javascript -->
     <!-- Funcion para cambiar la fuente de la imagen -->
     <script>
+        var image_added = false;
+
         function display_image(file) {
             var img = document.querySelector(".js-image");
             img.src = URL.createObjectURL(file);
+
+            image_added = true;
         }
 
         var myaction = {
@@ -249,7 +254,10 @@ if ($row) {
 
                     myform.append(inputs[i].name, inputs[i].value);
                 }
-
+                if( image_added )
+                {   
+                    myform.append('foto',document.querySelector('.js-image-input').files[0]);
+                }
                 myaction.send_data(myform);
             },
 
