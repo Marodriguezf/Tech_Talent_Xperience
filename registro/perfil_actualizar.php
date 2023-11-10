@@ -110,13 +110,13 @@ if ($row) {
                     </tr>
                     <tr>
                         <th>password</th>
-                        <td><input type="text" class="form-control" name="password" placeholder="password">
+                        <td><input  type="text" class="form-control" name="password" placeholder="Nuevo password ">
                             <div><small class="js-error js-error-password text-danger"></small></div>
                         </td>
                     </tr>
                     <tr>
                         <th>confirmar password</th>
-                        <td><input type="text" class="form-control" name="password" placeholder="password"></td>
+                        <td><input type="text" class="form-control" name="password" placeholder=" confirmar password"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Información Academica</th>

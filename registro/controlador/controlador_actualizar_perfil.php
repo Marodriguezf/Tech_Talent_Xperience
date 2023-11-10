@@ -40,7 +40,7 @@ if (!empty($_POST['password']))
 
 }
 
-if (empty($info['errors'])) 
+if (empty($info['errors'])&& $row) 
 {
 
     // guardar en la base de datos
@@ -48,15 +48,23 @@ if (empty($info['errors']))
     $arr['nombre'] = $_POST['nombre'];
     $arr['apellido'] = $_POST['apellido'];
     $arr['correo'] = $_POST['correo'];
+    $arr['id_candidato'] = $row['id_candidato'];
 
     if (!empty($_POST['password'])) 
     {
 
         $arr['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        db_query("update registro_candidatos set nombre = :nombre,apellido = :apellido, correo = :correo, password = :password", $arr);
+        db_query("update registro_candidatos set nombre = :nombre,apellido = :apellido, correo = :correo, password = :password where id_candidato = :id_candidato limit 1", $arr);
     }else{
-        db_query("update registro_candidatos set nombre = :nombre,apellido = :apellido, correo = :correo", $arr);
+        db_query("update registro_candidatos set nombre = :nombre,apellido = :apellido, correo = :correo where id_candidato = :id_candidato limit 1", $arr);
     }
-    $_SESSION['PROFILE'] = $row;
+    $row = db_query("select * from registro_candidatos where id_candidato = :id_candidato limit 1", ['id_candidato' =>$row['id_candidato']]);
+        
+    if ($row) 
+    {
+        $row = $row[0];
+        $_SESSION['PROFILE'] =$row;
+    }
+   
     $info['success'] = true;
 }
