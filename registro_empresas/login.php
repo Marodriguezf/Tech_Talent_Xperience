@@ -61,12 +61,12 @@
         <div><small class="my-1 js-error js-error-correo text-danger"></small></div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-            <input name="correo_empresa" id="correo" type="email" class="form-control" placeholder="Correo Empresa">
+            <input name="correo_empresa" id="correo_empresa" type="email" class="form-control" placeholder="Correo Empresa">
         </div>
         <div><small class="my-1 js-error js-error-password text-danger"></small></div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-            <input name="password_empresa" id="password" type="password" class="form-control" placeholder="Contraseña">
+            <input name="password_empresa" id="password_empresa" type="password" class="form-control" placeholder="Contraseña">
         </div>
 
             <div class="progress mb-3 mt-3 d-none">
