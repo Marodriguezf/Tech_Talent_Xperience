@@ -66,7 +66,9 @@ if ($row) {
                         <a class="nav-link" href="./nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a>
+                        <button class="mx-auto m-1 btn btn-warning text-white"> + Publicar Vacante</button>
+                        </a>
                     </li>
                 </ul>
             </div>
