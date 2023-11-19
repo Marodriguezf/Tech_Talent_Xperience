@@ -78,7 +78,7 @@ if ($row) {
     <?php if (!empty($row)) : ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Actualizar Perfil </div>
-            <div class="  foto_perfil">
+            <div class="foto_perfil">
                 <img src="<?= get_image($row['foto_empresa']) ?>" class="js-image img-fluid rounded" alt="">
             </div>
             <div class="mb-3">
@@ -227,7 +227,7 @@ if ($row) {
                 }
                 if( image_added )
                 {   
-                    myform.append('foto',document.querySelector('.js-image-input').files[0]);
+                    myform.append('foto_empresa',document.querySelector('.js-image-input').files[0]);
                 }
                 myaction.send_data(myform);
             },
