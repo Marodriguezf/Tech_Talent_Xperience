@@ -58,12 +58,12 @@
     <form method="post" onsubmit="myaction.collect_data(event, 'login')">
     <div class="login col-md-6 border mx-auto mt-5 p-4 shadow">
         <div class="h2">Inicia sesión</div>
-        <div><small class="my-1 js-error js-error-correo text-danger"></small></div>
+        <div><small class="my-1 js-error js-error-correo_empresa text-danger"></small></div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
             <input name="correo_empresa" id="correo_empresa" type="email" class="form-control" placeholder="Correo Empresa">
         </div>
-        <div><small class="my-1 js-error js-error-password text-danger"></small></div>
+        <div><small class="my-1 js-error js-error-password_empresa text-danger"></small></div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
             <input name="password_empresa" id="password_empresa" type="password" class="form-control" placeholder="Contraseña">
