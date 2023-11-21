@@ -56,42 +56,40 @@
         <div class="singup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
             <div class="h2">Crear Vacante</div>
             <div class="input-group mt-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                <input name="titulo" type="text" class="form-control" placeholder="titulo">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-bag-shopping"></i></span>
+                <input name="titulo" type="text" class="form-control" placeholder="Titulo De la Vacante">
             </div>
             <div><small class="js-error js-error-titulo text-danger"></small></div>
             <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-                <input name="funciones" type="text" class="form-control" placeholder="funciones">
+                <input name="funciones" type="text" class="form-control" placeholder="Funciones">
             </div>
             <div><small class="js-error js-error-funciones text-danger"></small></div>
             <div class="input-group mt-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-money-bill"></i></span>
                 <input name="salario" type="text" class="form-control" placeholder="Salario">
             </div>
             <div><small class="js-error js-error-salario text-danger"></small></div>
             <div class="input-group mt-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-laptop"></i></span>
                 <input name="modalidad" type="text" class="form-control" placeholder="Modalidad">
             </div>
             <div><small class="js-error js-error-ubicacion text-danger"></small></div>
             <div class="input-group mt-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-                <input name="ubicacion" type="text" class="form-control" placeholder="ubicacion">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-location-dot"></i></span>
+                <input name="ubicacion" type="text" class="form-control" placeholder="Ubicacion">
             </div>
             <div><small class="js-error js-error-ubicacion text-danger"></small></div>
             <div class="input-group mt-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-language"></i></span>
                 <input name="idiomas" type="text" class="form-control" placeholder="Idiomas">
             </div>
             <div><small class="js-error js-error-idiomas text-danger"></small></div>
             <div class="input-group mt-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
                 <input name="conocimientos" type="text" class="form-control" placeholder="Conocimientos">
             </div>
             <div><small class="js-error js-error-conocimientos text-danger"></small></div>
-       
-
             <div class="progress mb-3 mt-3 d-none">
                 <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
             </div>
