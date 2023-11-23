@@ -172,7 +172,7 @@
 						myaction.handle_result(ajax.responseText);
 					}else{
 						console.log(ajax);
-						alert("An error occurred");
+						alert("Ha ocurrido un error");
 					}
 				}
 			});

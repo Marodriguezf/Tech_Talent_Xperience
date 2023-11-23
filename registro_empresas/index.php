@@ -67,7 +67,7 @@ if ($row) {
                     </li>
                     <li class="nav-item">
                         <a>
-                        <button class="mx-auto m-1 btn btn-warning text-white"> + Publicar Vacante</button>
+                        <button class="mx-auto m-1 btn btn-warning text-white" onclick="window.location.href='../../crear_vacante/crear_vacante.php'">Publicar Vacante</button>
                         </a>
                     </li>
                 </ul>

@@ -198,7 +198,7 @@
 			var obj = JSON.parse(result);
 			if(obj.success)
 			{
-				alert("Usuario registrado correctamente");
+				alert("Vacante creada correctamente");
 				window.location.href = 'login.php';
 			}else{
 
