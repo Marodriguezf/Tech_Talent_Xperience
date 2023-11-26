@@ -1,27 +1,34 @@
 <?php
 
 
-if (!empty($_POST['data_type'])) {
-    
+if (!empty($_POST['data_type'])) 
+{
+
     $info['data_type'] = $_POST['data_type'];
     $info['errors'] = [];
     $info['success'] = false;
 
-    if ($_POST['data_type'] == "crear_vacante") 
-    {
-        $info['errors']['titulo'] ="Es requerido un titulo de vacante";
+    if ($_POST['data_type'] == "crear_vacante") {
+        if (empty($_POST['titulo'])) {
 
-    }elseif(!preg_match(" /^[\ p{L}]+$/ ", $_POST['titulo']))
-    {
-        $info['errors']
+
+            $info['errors']['titulo'] = "Es requerido un titulo de vacante";
+
+        } elseif (!preg_match(" /^[\ p{L}]+$/ ", $_POST['titulo'])) {
+            $info['errors']['titulo'] = "El titulo no puede contener caracteres especiales o numeros";
+        }
+
+        if (empty($info['errors'])) 
+        {
+            $info['success'] = true;
+        }
+
     }
+        //Devolver una respuesta JSON
+    echo json_encode($_POST);
+}
 
-    if(empty($info['errors']))
-    {
 
-    }
-    
-    
     /*{
         require './controlador/crear_vacante.php';
     } else
@@ -49,8 +56,8 @@ if (!empty($_POST['data_type'])) {
         }
         require './controlador/controlador_eliminar_vacante.php';
 
-    } else
+    } else */
 
-    // Devolver una respuesta JSON
-    echo json_encode($_POST);
-}
+
+
+    
