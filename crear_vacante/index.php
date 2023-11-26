@@ -2,14 +2,14 @@
 
 /*require 'functions.php';
 
-
 if (!is_logged_in()) {
     redirect('login.php');
 }
 
 $id = $_GET['id'] ?? $_SESSION['PROFILE']['id_empresa'];
 
-$row = db_query("select * from registro_empresas where id_empresa = :id_empresa limit 1", ['id_empresa' => $id]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
 
 if ($row) {
     $row = $row[0]; 
@@ -79,18 +79,14 @@ if ($row) {
         </div>
     </nav>
     <!-- Vacante publicada-->
-    <div class="text-center-p1"><a href="vacantes.php">Mis Vacantes</a></div>
+    <div class="text-center-p1"><a href="vacantes.php">Vacantes</a></div>
 
     <div class="singup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
+       <div class="foto_perfil">
+        
 
-        <div>
-            <a href="actualizar_vacante.php">
-                <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
-            </a>
-            <a href="eliminar_vacante.php">
-                <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
-            </a>
-        </div>
+       </div>
+   
         <div class="input-group mt-3">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-bag-shopping"></i></span>
             <input name="titulo" type="text" class="form-control" placeholder="Titulo De la Vacante">
@@ -131,6 +127,14 @@ if ($row) {
         <div><small class="js-error js-error-conocimientos text-danger"></small></div>
         <div class="progress mb-3 mt-3 d-none">
             <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
+        </div>
+        <div>
+            <a href="actualizar_vacante.php">
+                <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
+            </a>
+            <a href="eliminar_vacante.php">
+                <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
+            </a>
         </div>
 
     </div>

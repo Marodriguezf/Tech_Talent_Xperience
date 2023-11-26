@@ -1,5 +1,6 @@
 <?php
 
+
 require 'functions.php';
 
 
@@ -14,6 +15,7 @@ $row = db_query("select * from registro_empresas where id_empresa = :id_empresa 
 if ($row) {
     $row = $row[0];
 }
+
 
 ?>
 <!DOCTYPE html>

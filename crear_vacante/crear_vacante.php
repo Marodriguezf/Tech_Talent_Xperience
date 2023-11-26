@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tect Talent Xperience-singup</title>
+    <title>Tect Talent Xperience- Crear Vacante</title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -94,7 +94,7 @@
                 <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
             </div>
 
-            <button class=" mt-3 btn btn-primary col-12">Publicar Vacante</button>
+            <button class=" mt-3 btn btn-primary col-12">Crear Vacante</button>
         
 
         </div>
@@ -199,7 +199,7 @@
 			if(obj.success)
 			{
 				alert("Vacante creada correctamente");
-				window.location.href = 'login.php';
+				window.location.href = 'index.php';
 			}else{
 
 				//show errors
