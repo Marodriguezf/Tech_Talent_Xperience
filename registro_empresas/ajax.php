@@ -43,3 +43,4 @@ if (!empty($_POST['data_type'])) {
     // Devolver una respuesta JSON
     echo json_encode($info);
 }
+
