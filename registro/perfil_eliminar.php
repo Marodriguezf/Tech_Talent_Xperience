@@ -44,35 +44,32 @@ if ($row) {
 <!-- Barra de Navegación -->
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="../paginas/index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="../paginas/index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a class="nav-link" href="../paginas/registrate.html">Registrate</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <!-- Perfil candidato -->
     <?php if (!empty($row)) : ?>
@@ -85,9 +82,6 @@ if ($row) {
             <div><small class="js-error js-error-image text-danger"></small></div>
             <form method="post" onsubmit="myaction.collect_data(event, 'perfil_eliminar')">
                 <table class="table table-striped">
-                    <tr>
-                        <th colspan="2">Información Basica</th>
-                    </tr>
                     <tr>
                         <th>Nombre</th>
                         <td><div class="form-control"> <?= $row['nombre'] ?></div>
@@ -105,9 +99,6 @@ if ($row) {
                         <td><div class="form-control"><?= $row['correo'] ?></div>
                             <div><small class="js-error js-error-correo text-danger"></small></div>
                         </td>
-                    </tr>
-                        <th colspan="2">Información Academica</th>
-                    </tr>
                     <tr>
                         <th>Universidad/Institucion</th>
                         <td><input type="text" class="form-control" name="universidad" placeholder="Universidad"></td>
@@ -133,25 +124,6 @@ if ($row) {
                         <th>CV</th>
                         <td><input type="file" name=""></td>
                     </tr>
-                    <tr>
-                        <th colspan="2">Experiencia laboral (opcional)</th>
-                    </tr>
-                    <tr>
-                        <th>Empresa</th>
-                        <td><input type="text" class="form-control" name="empresa" placeholder="Nombre empresa"></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha inicio</th>
-                        <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha fin</th>
-                        <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
-                    </tr>
-                    <tr>
-                        <th>Funciones</th>
-                        <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
-                    </tr>
 
                 </table>
 
@@ -163,7 +135,7 @@ if ($row) {
                 <div class="p-2">
                     <button class="btn btn-danger float-end">Eliminar</button>
                     <a href="index.php">
-                        <label class="btn btn-secondary">volver</button>
+                        <label class="btn btn-custom text-white">Volver</button>
                     </a>
 
                 </div>
@@ -182,6 +154,10 @@ if ($row) {
     <?php endif; ?>
 
 
+    <br>
+    <br>
+    <br>
+
 
 
     <!-- footer -->
@@ -190,18 +166,18 @@ if ($row) {
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
@@ -210,8 +186,6 @@ if ($row) {
         </div>
         <div class="grupo-2">
             <small>&copy;2023 <b>Talent Tech Xperience</b> Todos los derechos reservados</small>
-
-
     </footer>
 
 
