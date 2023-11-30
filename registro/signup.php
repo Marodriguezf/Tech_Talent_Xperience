@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">
+            <a class="navbar-brand" href="../paginas/index.html">
                 <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
                     class="d-inline-block align-text-top">
             </a>
@@ -38,17 +38,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../paginas/index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Convenios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a class="nav-link" href="../paginas/registrate.html">Registrate</a>
                     </li>
                 </ul>
             </div>

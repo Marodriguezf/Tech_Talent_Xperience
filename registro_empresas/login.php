@@ -27,37 +27,35 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a class="nav-link" href="../paginas/registrate.html">Registrate</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    <br>
+    <br>
+    <br>
     <form method="post" onsubmit="myaction.collect_data(event, 'login')">
     <div class="login col-md-6 border mx-auto mt-5 p-4 shadow">
-        <div class="h2">Inicia sesión</div>
+        <div class="h2"style="color: #080F56;">Inicia sesión</div>
         <div><small class="my-1 js-error js-error-correo_empresa text-danger"></small></div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
@@ -73,33 +71,36 @@
                 <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
             </div>
 
-            <button class="btn btn-primary col-12">Login</button>
+            <button class="btn btn-primary col-12" style="background-color: #ff7300; border-color: #ff7300;">Login</button>
             <div class="m-2"></div>
             ¿No tienes una cuenta?<a href="signup.php">Registrate aqui</a>
         </div>
     </form>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-
-    <!-- footer -->
-    <footer class="pie-pagina">
+     <!-- footer -->
+     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
@@ -111,7 +112,6 @@
 
 
     </footer>
-
 
     <!-- Javascript -->
     <script>
