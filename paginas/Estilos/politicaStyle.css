@@ -1,0 +1,35 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    color: black;
+    text-align: justify;
+    margin: 20px;
+}
+
+/* Body Background */
+
+body {
+    background: #fbfbfb;
+
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-weight: bold;
+    text-align:center;
+    font-size:30px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size:30px;
+}
+
+section {
+    margin-bottom: 20px;
+}
