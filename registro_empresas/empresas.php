@@ -94,26 +94,32 @@ $rows = db_query("select * from registro_empresas");
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-    <!-- footer -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
