@@ -81,7 +81,7 @@ if ($row) {
             </div>
             <div><small class="js-error js-error-image text-danger"></small></div>
             <form method="post" onsubmit="myaction.collect_data(event, 'perfil_eliminar')">
-                <table class="table table-striped">
+                <table class="table">
     
                     <tr>
                         <th>Nombre de la empresa</th>
