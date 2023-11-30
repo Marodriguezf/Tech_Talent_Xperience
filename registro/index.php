@@ -22,9 +22,10 @@ if ($row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tect Talent Xperience-Perfil</title>
+    <title>Perfil Candidato</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,28 +46,24 @@ if ($row) {
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="../paginas/index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="../paginas/index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a class="nav-link" href="../paginas/registrate.html">Registrate</a>
                     </li>
                 </ul>
             </div>
@@ -75,44 +72,45 @@ if ($row) {
 
     <!-- Perfil candidato -->
     <div class="text-center-p1"><a href="candidatos.php">candidatos</a></div>
-    <?php if (!empty($row)) : ?>
+    <?php if (!empty($row)): ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Perfil candidato</div>
             <div class="  foto_perfil">
                 <img src="<?= get_image($row['foto']) ?>" class="img-fluid rounded" alt="">
             </div>
             <div>
-                <?php if(user('id_candidato') == $row['id_candidato']):?>
+                <?php if (user('id_candidato') == $row['id_candidato']): ?>
                     <a href="perfil_actualizar.php">
-                        <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
+                        <button class="mx-auto m-1 btn  btn-custom text-white">Actualizar</button>
                     </a>
                     <a href="perfil_eliminar.php">
-                        <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
+                        <button class="mx-auto m-1 btn btn-custom text-white">Eliminar</button>
                     </a>
                     <a href="logout.php">
-                        <button class="mx-auto m-1 btn btn-info text-white">Cerrar sesion</button>
+                        <button class="mx-auto m-1 btn btn-custom text-white">Cerrar sesión</button>
                     </a>
-                <?php endif;?>
+
+                <?php endif; ?>
             </div>
             <div>
-                <table class="table table-striped">
-                    <tr>
-                        <th colspan="2">Información Basica</th>
-                    </tr>
+                <table class="table">
                     <tr>
                         <th>Nombre</th>
-                        <td><?= esc($row['nombre']) ?></td>
+                        <td>
+                            <?= esc($row['nombre']) ?>
+                        </td>
                     </tr>
                     <tr>
                         <th>Apellido</th>
-                        <td><?= esc($row['apellido']) ?></td>
+                        <td>
+                            <?= esc($row['apellido']) ?>
+                        </td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td><?= esc($row['correo']) ?></td>
-                    </tr>
-                    <tr>
-                        <th colspan="2">Información Academica</th>
+                        <td>
+                            <?= esc($row['correo']) ?>
+                        </td>
                     </tr>
                     <tr>
                         <th>Universidad</th>
@@ -138,36 +136,18 @@ if ($row) {
                         <th>CV</th>
                         <td><input type="file" name=""></td>
                     </tr>
-                    <tr>
-                        <th colspan="2">Experiencia laboral (opcional)</th>
-                    </tr>
-                    <tr>
-                        <th>Empresa</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha de inicio</th>
-                        <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha fin</th>
-                        <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
-                    </tr>
-                    <tr>
-                        <th>Funciones</th>
-                        <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
-                    </tr>
-
                 </table>
             </div>
         </div>
-    <?php else : ?>
+    <?php else: ?>
         <div class="text-center alert alert-danger">el perfil no esta disponible</div>
         <a href="index.php">
             <button class="btn btn-primary m-4">Inicio</button>
         </a>
     <?php endif; ?>
-
+    <br>
+    <br>
+    <br>
 
     <!-- footer -->
     <footer class="pie-pagina">
@@ -175,18 +155,18 @@ if ($row) {
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
@@ -201,7 +181,9 @@ if ($row) {
 
 
     <!-- Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
 
 

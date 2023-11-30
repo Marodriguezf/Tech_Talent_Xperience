@@ -25,7 +25,8 @@ if ($row) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tect Talent Xperience-Actualizar perfil</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,28 +47,24 @@ if ($row) {
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="../paginas/index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="../paginas/index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a class="nav-link" href="../paginas/registrate.html">Registrate</a>
                     </li>
                 </ul>
             </div>
@@ -75,52 +72,51 @@ if ($row) {
     </nav>
 
     <!-- Perfil candidato -->
-    <?php if (!empty($row)) : ?>
+    <?php if (!empty($row)): ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
-            <div class="h1">Actualizar Perfil </div>
+            <div class="h1">Actualiza tu perfil </div>
             <div class="  foto_perfil">
                 <img src="<?= get_image($row['foto']) ?>" class="js-image img-fluid rounded" alt="">
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Carga una nueva imagen</label>
-                <input onchange="display_image(this.files[0])" class="js-image-input form-control" type="file" id="formFile">
+                <input onchange="display_image(this.files[0])" class="js-image-input form-control" type="file"
+                    id="formFile">
             </div>
             <div><small class="js-error js-error-image text-danger"></small></div>
             <form method="post" onsubmit="myaction.collect_data(event, 'perfil_actualizar')">
-                <table class="table table-striped">
-                    <tr>
-                        <th colspan="2">Información Basica</th>
-                    </tr>
+                <table class="table">
                     <tr>
                         <th>Nombre</th>
-                        <td><input value="<?= $row['nombre'] ?>" type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <td><input value="<?= $row['nombre'] ?>" type="text" class="form-control" name="nombre"
+                                placeholder="Nombre">
                             <div><small class="js-error js-error-nombre text-danger"></small></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Apellido</th>
-                        <td><input value="<?= $row['apellido'] ?>" type="text" class="form-control" name="apellido" placeholder="Apellidos">
+                        <td><input value="<?= $row['apellido'] ?>" type="text" class="form-control" name="apellido"
+                                placeholder="Apellidos">
                             <div><small class="js-error js-error-apellido text-danger"></small></div>
                         </td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td><input value="<?= $row['correo'] ?>" type="email" class="form-control" name="correo" placeholder="Correo">
+                        <td><input value="<?= $row['correo'] ?>" type="email" class="form-control" name="correo"
+                                placeholder="Correo">
                             <div><small class="js-error js-error-correo text-danger"></small></div>
                         </td>
                     </tr>
                     <tr>
                         <th>password</th>
-                        <td><input  type="password" class="form-control" name="password" placeholder="Nuevo password ">
+                        <td><input type="password" class="form-control" name="password" placeholder="Nuevo password ">
                             <div><small class="js-error js-error-password text-danger"></small></div>
                         </td>
                     </tr>
                     <tr>
                         <th>confirmar password</th>
-                        <td><input type="password" class="form-control" name="password" placeholder=" confirmar password"></td>
-                    </tr>
-                    <tr>
-                        <th colspan="2">Información Academica</th>
+                        <td><input type="password" class="form-control" name="password" placeholder=" confirmar password">
+                        </td>
                     </tr>
                     <tr>
                         <th>Universidad/Institucion</th>
@@ -148,25 +144,6 @@ if ($row) {
                         <td><input type="file" name=""></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Experiencia laboral (opcional)</th>
-                    </tr>
-                    <tr>
-                        <th>Empresa</th>
-                        <td><input type="text" class="form-control" name="empresa" placeholder="Nombre empresa"></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha inicio</th>
-                        <td><input type="date" class="form-control" name="fecha_inicio" placeholder="Fecha de inicio"></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha fin</th>
-                        <td><input type="date" class="form-control" name="fecha_fin" placeholder="Fecha fin"></td>
-                    </tr>
-                    <tr>
-                        <th>Funciones</th>
-                        <td><input type="text" class="form-control" name="funciones" placeholder="Funciones"></td>
-                    </tr>
-
                 </table>
 
                 <div class="progress mb-3 mt-3 d-none">
@@ -175,9 +152,9 @@ if ($row) {
 
 
                 <div class="p-2">
-                    <button class="btn btn-primary  float-end">Guardar</button>
+                    <button class="btn btn-custom text-white float-end">Guardar</button>
                     <a href="index.php">
-                        <label class="btn btn-secondary">volver</button>
+                        <label class="btn btn-custom text-white">Volver</button>
                     </a>
 
                 </div>
@@ -188,15 +165,15 @@ if ($row) {
 
 
         </div>
-    <?php else : ?>
+    <?php else: ?>
         <div class="text-center alert alert-danger">el perfil no esta disponible</div>
         <a href="index.php">
             <button class="btn btn-primary m-4">Inicio</button>
         </a>
     <?php endif; ?>
-
-
-
+    <br>
+    <br>
+    <br>
 
     <!-- footer -->
     <footer class="pie-pagina">
@@ -204,18 +181,18 @@ if ($row) {
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
@@ -242,7 +219,7 @@ if ($row) {
         }
 
         var myaction = {
-            collect_data: function(e, data_type) {
+            collect_data: function (e, data_type) {
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -254,14 +231,13 @@ if ($row) {
 
                     myform.append(inputs[i].name, inputs[i].value);
                 }
-                if( image_added )
-                {   
-                    myform.append('foto',document.querySelector('.js-image-input').files[0]);
+                if (image_added) {
+                    myform.append('foto', document.querySelector('.js-image-input').files[0]);
                 }
                 myaction.send_data(myform);
             },
 
-            send_data: function(form) {
+            send_data: function (form) {
 
                 var ajax = new XMLHttpRequest();
 
@@ -271,7 +247,7 @@ if ($row) {
                 document.querySelector(".progress-bar").style.width = "0%";
                 document.querySelector(".progress-bar").innerHTML = "Working... 0%";
 
-                ajax.addEventListener('readystatechange', function() {
+                ajax.addEventListener('readystatechange', function () {
 
                     if (ajax.readyState == 4) {
                         if (ajax.status == 200) {
@@ -284,7 +260,7 @@ if ($row) {
                     }
                 });
 
-                ajax.upload.addEventListener('progress', function(e) {
+                ajax.upload.addEventListener('progress', function (e) {
 
                     let percent = Math.round((e.loaded / e.total) * 100);
                     document.querySelector(".progress-bar").style.width = percent + "%";
@@ -295,7 +271,7 @@ if ($row) {
                 ajax.send(form);
             },
 
-            handle_result: function(result) {
+            handle_result: function (result) {
                 console.log(result);
                 var obj = JSON.parse(result);
                 if (obj.success) {
@@ -319,7 +295,9 @@ if ($row) {
             }
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
 
 
