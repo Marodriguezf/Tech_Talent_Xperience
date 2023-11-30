@@ -74,7 +74,7 @@ if ($row) {
 
     <!-- Perfil empresa -->
 
-    <div class="text-center-p1"><a href="../registro_empresas/empresas.php">Empresas</a></div>
+  
     <?php if (!empty($row)) : ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Perfil Empresa</div>

@@ -71,10 +71,6 @@ if ($row) {
     </nav>
 
     <!-- Perfil candidato -->
-    <div class="text-center-p1">
-        <a href="candidatos.php" class="btn btn-custom text-white">Candidatos</a>
-    </div>
-
 
     <?php if (!empty($row)): ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">

@@ -68,11 +68,11 @@ $rows = db_query("select * from registro_empresas");
     <div class="row">
     <?php if (!empty($rows)) : ?>
         <?php foreach ($rows as $row) : ?>
-            <div class="  perfil col-2 border rounded mx-auto mt-5 p-2 shadow-lg" style="width:200px;">
-                <a href="index.php?id=<?= $row['id_empresa'] ?>">
+            <div class="  perfil col-2 border rounded mx-auto mt-5 p-2 shadow-lg" style="width:220px;">
+                <a href="index.php?id=<?= $row['id_empresa'] ?>"style="text-decoration: none; color: #000;">
                     <div class="col-md-12 text-center">
-                        <div class="foto_perfil" style="display: flex; align-items: center; justify-content: center;">
-                            <img src="<?= get_image($row['foto_empresa']) ?>" class="img-fluid rounded" style="width: 170px; height: 170px;object-fit: cover;margin-right:20px;">
+                        <div class="foto_perfil"style="display: flex; align-items: flex-start; justify-content: center; margin-bottom: 18px; margin-left:10px">
+                            <img src="<?= get_image($row['foto_empresa']) ?>" class="img-fluid rounded" style="width: 170px; height: 170px; object-fit: cover;">
                         </div>
                         <div>
                             <div><?= esc($row['nombre_empresa']) ?></div>
