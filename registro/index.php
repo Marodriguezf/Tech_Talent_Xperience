@@ -71,7 +71,11 @@ if ($row) {
     </nav>
 
     <!-- Perfil candidato -->
-    <div class="text-center-p1"><a href="candidatos.php">candidatos</a></div>
+    <div class="text-center-p1">
+        <a href="candidatos.php" class="btn btn-custom text-white">Candidatos</a>
+    </div>
+
+
     <?php if (!empty($row)): ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Perfil candidato</div>
@@ -148,7 +152,6 @@ if ($row) {
     <br>
     <br>
     <br>
-
     <!-- footer -->
     <footer class="pie-pagina">
         <div class="grupo-1">

@@ -44,33 +44,28 @@ if ($row) {
 
 <!-- Barra de Navegación -->
 
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="../paginas/index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="../paginas/index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a>
-                        <button class="mx-auto m-1 btn btn-warning text-white" onclick="window.location.href='../../crear_vacante/crear_vacante.php'">Publicar Vacante</button>
-                        </a>
+                        <a class="nav-link" href="../registro/candidatos.php">Candidatos</a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +73,8 @@ if ($row) {
     </nav>
 
     <!-- Perfil empresa -->
-    <div class="text-center-p1"><a href="empresas.php">Empresas</a></div>
+
+    <div class="text-center-p1"><a href="../registro/candidatos.php">Empresas</a></div>
     <?php if (!empty($row)) : ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
             <div class="h1">Perfil Empresa</div>
@@ -88,25 +84,25 @@ if ($row) {
             <div>
                 <?php if(user('id_empresa') == $row['id_empresa']):?>
                     <a href="perfil_actualizar.php">
-                        <button class="mx-auto m-1 btn btn-warning text-white">Actualizar</button>
+                        <button class="mx-auto m-1 btn btn-custom text-white">Actualizar</button>
                     </a>
                     <a href="perfil_eliminar.php">
-                        <button class="mx-auto m-1 btn btn-danger">Eliminar</button>
+                        <button class="mx-auto m-1 btn btn-custom text-white">Eliminar</button>
                     </a>
                     <a href="logout.php">
-                        <button class="mx-auto m-1 btn btn-info text-white">Cerrar sesion</button>
+                        <button class="mx-auto m-1 btn btn-custom text-white">Cerrar sesion</button>
                     </a>
                 <?php endif;?>
             </div>
             <div>
-                <table class="table table-striped">
+                <table class="table">
     
                     <tr>
                         <th>Nombre de la empresa</th>
                         <td><?= esc($row['nombre_empresa']) ?></td>
                     </tr>
                     <tr>
-                        <th>sector</th>
+                        <th>Sector</th>
                         <td><?= esc($row['sector']) ?></td>
                     </tr>
                     <tr>
@@ -114,23 +110,19 @@ if ($row) {
                         <td><?= esc($row['correo_empresa']) ?></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Información de la empresa</th>
-                    </tr>
-                    <tr>
-                        <th>descripcion</th>
+                        <th>Descripción</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th>ubicacion</th>
+                        <th>Ubicación</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th>pagina web</th>
+                        <th>Pagina web</th>
                         <td></td>
                     </tr>
                     <tr>
-                        <th>redes sociales</th>
-                        <td></td>
+                        <th>Redes sociales</th>
                         <td></td>
                     </tr>
     
@@ -143,7 +135,9 @@ if ($row) {
             <button class="btn btn-primary m-4">Inicio</button>
         </a>
     <?php endif; ?>
-
+    <br>
+    <br>
+    <br>
 
     <!-- footer -->
     <footer class="pie-pagina">
@@ -151,18 +145,18 @@ if ($row) {
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
@@ -174,6 +168,7 @@ if ($row) {
 
 
     </footer>
+
 
 
     <!-- Javascript -->

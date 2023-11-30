@@ -43,9 +43,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../paginas/registrate.html">Registrate</a>
-                    </li>
                 </ul>
             </div>
         </div>
