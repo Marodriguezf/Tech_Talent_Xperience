@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Candidatos</title>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,25 +28,24 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
+                        <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./nosotros.html">Convenios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./registrate.html">Registrate</a>
@@ -55,9 +55,10 @@
         </div>
     </nav>
 
+
     <form method="post" onsubmit="myaction.collect_data(event, 'signup')">
-        <div class="singup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
-            <div class="h2">Registrate</div>
+        <div class="signup col-md-8 col-lg-4 border rounded mx-auto mt-5 p-4 shadow">
+            <div class="h2" style="color: #080F56;">Registro Candidatos</div>
             <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
                 <input name="nombre" type="text" class="form-control" placeholder="Nombre">
@@ -81,14 +82,17 @@
 
             <div class="input-group mt-3">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                <input name="confirmar_password" type="password" class="form-control" placeholder="Confirme su Password">
-            </div>
+                <input name="confirmar_password" type="password" class="form-control"
+                    placeholder="Confirme su Password">
 
+            </div>
             <div class="progress mb-3 mt-3 d-none">
                 <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
             </div>
+            <button class="mt-3 btn btn-primary col-12"
+                style="background-color: #ff7300; border-color: #ff7300;">Registrate</button>
 
-            <button class=" mt-3 btn btn-primary col-12">Registrate</button>
+
             <div class="m-2"></div>
             ¿Ya tienes una cuenta?<a href="login.php">Inicia sesion</a>
 
@@ -96,26 +100,26 @@
     </form>
     <br>
     <br>
- 
-
+    <br>
+    <br>
     <!-- footer -->
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
@@ -128,95 +132,89 @@
 
     </footer>
 
-
     <!-- Javascript -->
     <script>
-	
-	var myaction  = 
-	{
-		collect_data: function(e, data_type)
-		{
-			e.preventDefault();
-			e.stopPropagation();
 
-			var inputs = document.querySelectorAll("form input, form select");
-			let myform = new FormData();
-			myform.append('data_type',data_type);
+        var myaction =
+        {
+            collect_data: function (e, data_type) {
+                e.preventDefault();
+                e.stopPropagation();
 
-			for (var i = 0; i < inputs.length; i++) {
+                var inputs = document.querySelectorAll("form input, form select");
+                let myform = new FormData();
+                myform.append('data_type', data_type);
 
-				myform.append(inputs[i].name, inputs[i].value);
-			}
+                for (var i = 0; i < inputs.length; i++) {
 
-			myaction.send_data(myform);
-		},
+                    myform.append(inputs[i].name, inputs[i].value);
+                }
 
-		send_data: function (form)
-		{
+                myaction.send_data(myform);
+            },
 
-			var ajax = new XMLHttpRequest();
+            send_data: function (form) {
 
-			document.querySelector(".progress").classList.remove("d-none");
+                var ajax = new XMLHttpRequest();
 
-			//reset the prog bar
-			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "En proceso... 0%";
+                document.querySelector(".progress").classList.remove("d-none");
 
-			ajax.addEventListener('readystatechange', function(){
+                //reset the prog bar
+                document.querySelector(".progress-bar").style.width = "0%";
+                document.querySelector(".progress-bar").innerHTML = "En proceso... 0%";
 
-				if(ajax.readyState == 4)
-				{
-					if(ajax.status == 200)
-					{
-						//all good
-						myaction.handle_result(ajax.responseText);
-					}else{
-						console.log(ajax);
-						alert("Ha ocurrido un error");
-					}
-				}
-			});
+                ajax.addEventListener('readystatechange', function () {
 
-			ajax.upload.addEventListener('progress', function(e){
+                    if (ajax.readyState == 4) {
+                        if (ajax.status == 200) {
+                            //all good
+                            myaction.handle_result(ajax.responseText);
+                        } else {
+                            console.log(ajax);
+                            alert("Ha ocurrido un error");
+                        }
+                    }
+                });
 
-				let percent = Math.round((e.loaded / e.total) * 100);
-				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
-			});
+                ajax.upload.addEventListener('progress', function (e) {
 
-			ajax.open('post','ajax.php', true);
-			ajax.send(form);
-		},
+                    let percent = Math.round((e.loaded / e.total) * 100);
+                    document.querySelector(".progress-bar").style.width = percent + "%";
+                    document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
+                });
 
-		handle_result: function (result)
-		{
-			console.log(result);
-			var obj = JSON.parse(result);
-			if(obj.success)
-			{
-				alert("Usuario registrado correctamente");
-				window.location.href = 'login.php';
-			}else{
+                ajax.open('post', 'ajax.php', true);
+                ajax.send(form);
+            },
 
-				//show errors
-				let error_inputs = document.querySelectorAll(".js-error");
+            handle_result: function (result) {
+                console.log(result);
+                var obj = JSON.parse(result);
+                if (obj.success) {
+                    alert("Usuario registrado correctamente");
+                    window.location.href = 'login.php';
+                } else {
 
-				//empty all errors
-				for (var i = 0; i < error_inputs.length; i++) {
-					error_inputs[i].innerHTML = "";
-				}
+                    //show errors
+                    let error_inputs = document.querySelectorAll(".js-error");
 
-				//display errors
-				for(key in obj.errors)
-				{
-					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
-				}
-			}
-		}
-	};
+                    //empty all errors
+                    for (var i = 0; i < error_inputs.length; i++) {
+                        error_inputs[i].innerHTML = "";
+                    }
 
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+                    //display errors
+                    for (key in obj.errors) {
+                        document.querySelector(".js-error-" + key).innerHTML = obj.errors[key];
+                    }
+                }
+            }
+        };
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
 
 
