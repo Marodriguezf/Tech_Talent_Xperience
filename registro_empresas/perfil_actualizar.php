@@ -44,40 +44,37 @@ if ($row) {
 <!-- Barra de Navegación -->
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./Imagenes/Logo.png" alt="Logo" width="66" height="80" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="../paginas/index.html">
+                <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
+                    class="d-inline-block align-text-top">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="../paginas/index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./vacantes.html">vacantes</a>
+                        <a class="nav-link" href="../paginas/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./empresas.html">Empresas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registrate.html">Registrate</a>
+                        <a class="nav-link" href="../registro/candidatos.php">Candidatos</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+
     <!-- Perfil candidato -->
     <?php if (!empty($row)) : ?>
         <div class=" row perfil col-6 border rounded mx-auto mt-5 p-1 shadow-lg">
-            <div class="h1">Actualizar Perfil </div>
+            <div class="h1">Actualiza tu perfil </div>
             <div class="foto_perfil">
                 <img src="<?= get_image($row['foto_empresa']) ?>" class="js-image img-fluid rounded" alt="">
             </div>
@@ -87,10 +84,8 @@ if ($row) {
             </div>
             <div><small class="js-error js-error-image text-danger"></small></div>
             <form method="post" onsubmit="myaction.collect_data(event, 'perfil_actualizar')">
-                <table class="table table-striped">
-                    <tr>
-                        <th colspan="2">Información De la empresa</th>
-                    </tr>
+                <table class="table">
+
                     <tr>
                         <th>Nombre de la empresa</th>
                         <td><input value="<?= $row['nombre_empresa'] ?>" type="text" class="form-control" name="nombre_empresa" placeholder="Nombre Empresa">
@@ -110,32 +105,29 @@ if ($row) {
                         </td>
                     </tr>
                     <tr>
-                        <th>password</th>
+                        <th>Password</th>
                         <td><input  type="password" class="form-control" name="password" placeholder="Nuevo password ">
                             <div><small class="js-error js-error-password text-danger"></small></div>
                         </td>
                     </tr>
                     <tr>
-                        <th>confirmar password</th>
+                        <th>Confirmar password</th>
                         <td><input type="password" class="form-control" name="password" placeholder=" confirmar password"></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Información de la empresa</th>
-                    </tr>
-                    <tr>
-                        <th>descripcion</th>
+                        <th>Descripcion</th>
                         <td><input type="text" class="form-control" name="descripcion" placeholder="Descripcion"></td>
                     </tr>
                     <tr>
-                        <th>ubicacion</th>
+                        <th>Ubicación</th>
                         <td><input type="text" class="form-control" name="ubicacion_empresas" placeholder="Ubicacion"></td>
                     </tr>
                     <tr>
-                        <th>pagina web</th>
+                        <th>Pagina Web</th>
                         <td><input type="number" class="form-control" name="pagina_web" placeholder="pagina Web"></td>
                     </tr>
                     <tr>
-                        <th>redes sociales</th>
+                        <th>Redes Sociales</th>
                         <td><input type="text" class="form-control" name="redes_sociales" placeholder="Redes sociales"></td>
 
                 </table>
@@ -146,9 +138,9 @@ if ($row) {
 
 
                 <div class="p-2">
-                    <button class="btn btn-primary  float-end">Guardar</button>
+                    <button class="btn btn-custom text-white float-end">Guardar</button>
                     <a href="index.php">
-                        <label class="btn btn-secondary">volver</button>
+                        <label class="btn btn-custom text-white">Volver</button>
                     </a>
 
                 </div>
@@ -165,7 +157,9 @@ if ($row) {
             <button class="btn btn-primary m-4">Inicio</button>
         </a>
     <?php endif; ?>
-
+    <br>
+    <br>
+    <br>
 
 
 
@@ -175,18 +169,18 @@ if ($row) {
             <div class="box">
                 <figure>
                     <a href="#"></a>
-                    <img src="./Imagenes/Logo.png" alt="Logo arena">
+                    <img src="./Imagenes/logo version 3.png" alt="Logo arena">
                 </figure>
             </div>
 
-            <div class="box">
+            <div class="box2">
                 <h2>Sobre Nosotros</h2>
                 <p>Somos una plataforma web que te abre puertas a nuevas oportunidades laborales</p>
             </div>
 
             <div class="box3">
                 <h2> Siguenos</h2>
-                <div class="red-social">
+                <div class="redes-sociales">
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-whatsapp"></a>
