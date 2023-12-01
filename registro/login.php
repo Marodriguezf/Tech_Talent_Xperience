@@ -69,9 +69,6 @@
             <input name="password" id="password" type="password" class="form-control" placeholder="Contraseña">
         </div>
 
-            <div class="progress mb-3 mt-3 d-none">
-                <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
-            </div>
 
             <button class="btn btn-primary col-12"style="background-color: #ff7300; border-color: #ff7300;">Login</button>
             <div class="m-2"></div>
@@ -118,90 +115,63 @@
 
     <!-- Javascript -->
     <script>
-	
-	var myaction  = 
-	{
-		collect_data: function(e, data_type)
-		{
-			e.preventDefault();
-			e.stopPropagation();
+    var myaction = {
+        collect_data: function (e, data_type) {
+            e.preventDefault();
+            e.stopPropagation();
 
-			var inputs = document.querySelectorAll("form input, form select");
-			let myform = new FormData();
-			myform.append('data_type',data_type);
+            var inputs = document.querySelectorAll("form input, form select");
+            let myform = new FormData();
+            myform.append('data_type', data_type);
 
-			for (var i = 0; i < inputs.length; i++) {
+            for (var i = 0; i < inputs.length; i++) {
+                myform.append(inputs[i].name, inputs[i].value);
+            }
 
-				myform.append(inputs[i].name, inputs[i].value);
-			}
+            myaction.send_data(myform);
+        },
 
-			myaction.send_data(myform);
-		},
+        send_data: function (form) {
+            var ajax = new XMLHttpRequest();
 
-		send_data: function (form)
-		{
+            ajax.addEventListener('readystatechange', function () {
+                if (ajax.readyState == 4) {
+                    if (ajax.status == 200) {
+                        // all good
+                        myaction.handle_result(ajax.responseText);
+                    } else {
+                        console.log(ajax);
+                        alert("Ha ocurrido un error");
+                    }
+                }
+            });
 
-			var ajax = new XMLHttpRequest();
+            ajax.open('post', 'ajax.php', true);
+            ajax.send(form);
+        },
 
-			document.querySelector(".progress").classList.remove("d-none");
+        handle_result: function (result) {
+            console.log(result);
+            var obj = JSON.parse(result);
+            if (obj.success) {
+                alert("Ingreso exitoso");
+                window.location.href = 'index.php';
+            } else {
+                // show errors
+                let error_inputs = document.querySelectorAll(".js-error");
 
-			//reset the prog bar
-			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "En proceso... 0%";
+                // empty all errors
+                for (var i = 0; i < error_inputs.length; i++) {
+                    error_inputs[i].innerHTML = "";
+                }
 
-			ajax.addEventListener('readystatechange', function(){
-
-				if(ajax.readyState == 4)
-				{
-					if(ajax.status == 200)
-					{
-						//all good
-						myaction.handle_result(ajax.responseText);
-					}else{
-						console.log(ajax);
-						alert("An error occurred");
-					}
-				}
-			});
-
-			ajax.upload.addEventListener('progress', function(e){
-
-				let percent = Math.round((e.loaded / e.total) * 100);
-				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
-			});
-
-			ajax.open('post','ajax.php', true);
-			ajax.send(form);
-		},
-
-		handle_result: function (result)
-		{
-			console.log(result);
-			var obj = JSON.parse(result);
-			if(obj.success)
-			{
-				alert("Ingreso exitoso");
-				window.location.href = 'index.php';
-			}else{
-
-				//show errors
-				let error_inputs = document.querySelectorAll(".js-error");
-
-				//empty all errors
-				for (var i = 0; i < error_inputs.length; i++) {
-					error_inputs[i].innerHTML = "";
-				}
-
-				//display errors
-				for(key in obj.errors)
-				{
-					document.querySelector(".js-error-"+key).innerHTML = obj.errors[key];
-				}
-			}
-		}
-	};
-
+                // display errors
+                for (key in obj.errors) {
+                    document.querySelector(".js-error-" + key).innerHTML = obj.errors[key];
+                }
+            }
+        }
+    };
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
