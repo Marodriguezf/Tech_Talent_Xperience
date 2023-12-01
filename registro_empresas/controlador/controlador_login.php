@@ -17,10 +17,10 @@
 			$_SESSION['PROFILE'] =$row;
 		}else
 		{
-			$info['errors']['correo_empresa'] = "Wrong email or password";
+			$info['errors']['correo_empresa'] = "Email o contraseña Inconrrecta";
 		}
 
 	}else
 	{
-		$info['errors']['correo_empresa'] = "Wrong email or password";
+		$info['errors']['correo_empresa'] = "Email o contraseña Inconrrecta";
 	}

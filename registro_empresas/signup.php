@@ -80,9 +80,6 @@
                 <input name="confirmar_password" type="password" class="form-control" placeholder="Confirme su Password">
             </div>
 
-            <div class="progress mb-3 mt-3 d-none">
-                <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
-            </div>
 
             <button class=" mt-3 btn btn-primary col-12" style="background-color: #ff7300; border-color: #ff7300;">Registrar empresa</button>
             <div class="m-2"></div>
@@ -151,13 +148,6 @@
 		{
 
 			var ajax = new XMLHttpRequest();
-
-			document.querySelector(".progress").classList.remove("d-none");
-
-			//reset the prog bar
-			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "En proceso... 0%";
-
 			ajax.addEventListener('readystatechange', function(){
 
 				if(ajax.readyState == 4)
@@ -171,13 +161,6 @@
 						alert("An error occurred");
 					}
 				}
-			});
-
-			ajax.upload.addEventListener('progress', function(e){
-
-				let percent = Math.round((e.loaded / e.total) * 100);
-				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
 			});
 
 			ajax.open('post','ajax.php', true);

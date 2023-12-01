@@ -64,10 +64,6 @@
             <input name="password_empresa" id="password_empresa" type="password" class="form-control" placeholder="Contraseña">
         </div>
 
-            <div class="progress mb-3 mt-3 d-none">
-                <div class="progress-bar" role="progressbar" style="width: 50%"> En progreso...25%</div>
-            </div>
-
             <button class="btn btn-primary col-12" style="background-color: #ff7300; border-color: #ff7300;">Login</button>
             <div class="m-2"></div>
             ¿No tienes una cuenta?<a href="signup.php">Registrate aqui</a>
@@ -137,12 +133,6 @@
 
 			var ajax = new XMLHttpRequest();
 
-			document.querySelector(".progress").classList.remove("d-none");
-
-			//reset the prog bar
-			document.querySelector(".progress-bar").style.width = "0%";
-			document.querySelector(".progress-bar").innerHTML = "En proceso... 0%";
-
 			ajax.addEventListener('readystatechange', function(){
 
 				if(ajax.readyState == 4)
@@ -153,17 +143,11 @@
 						myaction.handle_result(ajax.responseText);
 					}else{
 						console.log(ajax);
-						alert("An error occurred");
+						alert("Ha ocurrido un error");
 					}
 				}
 			});
 
-			ajax.upload.addEventListener('progress', function(e){
-
-				let percent = Math.round((e.loaded / e.total) * 100);
-				document.querySelector(".progress-bar").style.width = percent + "%";
-				document.querySelector(".progress-bar").innerHTML = "En proceso..." + percent + "%";
-			});
 
 			ajax.open('post','ajax.php', true);
 			ajax.send(form);
