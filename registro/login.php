@@ -27,7 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">
+            <a class="navbar-brand" href="../paginas/index.html">
                 <img src="./Imagenes/Logo version 2 sin fondo.png" alt="Logo" width="150" height="150"
                     class="d-inline-block align-text-top">
             </a>
